@@ -11,7 +11,7 @@ A B C D E F
 '''
 
 n = int(input())
-# for i in range (n):
+for i in range (n):
     ch= chr(ord("A") + n-i-1)
     for j in range (i+1):    
         print(chr(ord(ch) + j), end=" ")
