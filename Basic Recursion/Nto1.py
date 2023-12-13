@@ -4,8 +4,8 @@ Problem: Print from N to 1 using Recursion
 '''
 # This is my approach 
 
-def printNos(x):
-    i =1
+def printNos(x,i =1):
+    
     if i >x :
         return
     print(x,end=" ")
