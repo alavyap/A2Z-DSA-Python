@@ -40,6 +40,38 @@ Output:
 {'a': 1, 'b': 5, 'c': 7, 'd': 5}
 '''
 def merge_dict(dict1,dict2):
+    result = {}
+    result = dict1.copy()
+    for key,value in dict2.items():
+        result[key] = result.get(key,0) + value
+    
+    return result
 
 
 print(merge_dict( {'a': 1, 'b': 2, 'c': 3}, {'b': 3, 'c': 4, 'd': 5}))
+
+
+#Problem 3
+
+'''
+Key with the Highest Value
+Define a function which takes a dictionary as a parameter and returns the key with the highest value in a dictionary.
+
+Example:
+
+my_dict = {'a': 5, 'b': 9, 'c': 2}
+max_value_key(my_dict))
+Output:
+
+b
+
+'''
+
+def max_value_key(my_dict):
+    max = 0
+    for key,values in my_dict.items():
+        if values > max:
+            max = values    
+    return key
+
+print(max_value_key({'a': 5, 'b': 9, 'c': 2}))
