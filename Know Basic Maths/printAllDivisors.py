@@ -36,6 +36,7 @@ print()
 # the code down below is not in time complexity of O(sqrt(n))
 
 
+'''
 for i in range (1, n+1):
     j =1
     sqrt_i = int(i ** 0.5)
@@ -47,5 +48,22 @@ for i in range (1, n+1):
         j += 1
 print(sum)
 # return(sum)
+'''
 
+# O(sqrt(n)) time complexity
+
+l = 1
+# Iterating over all values of 'l' such that 'n/l' is distinct.
+# There at most 2*sqrt(n) such values.
+while l <= n:
+    val = n // l
+        # 'r' = maximum value of 'i' such that 'n/i' is val.
+    r = n // val
+    sum += ((r * (r + 1)) // 2 - (l * (l - 1)) // 2) * val
+        
+    # moving on to next range.
+    l = r + 1
+
+print (sum)
+# return sum
 

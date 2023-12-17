@@ -1,3 +1,5 @@
+
+# To able to solve hashing in python you need to know dictionary
 '''
                                             Hashing
 arr = [1,2,1,3,2] {1:2, 2:2, 3:1 }
@@ -32,3 +34,5 @@ def chrHashing(n,a):
     
 # Test Run
 print(chrHashing('a',['a','b','a','a','c']))
+
+

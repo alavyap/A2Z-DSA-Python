@@ -25,3 +25,4 @@ for i in range(2 * n-1):
         left = (2 * n -2 ) - i
         print (n - min(min(top,bottom),min( left,right)),end = "")
     print()
+    

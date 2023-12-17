@@ -1,6 +1,7 @@
+
 #  Example 1 
 n = 5 
-factorial = 1
+factorial = 120
 
 while (n > 0):
     factorial *= n
@@ -25,4 +26,26 @@ for num in numbers :
         continue
     print("Odd numbers: {}".format(num))
 
+
 # -----------------------------------------------------------------------
+
+
+# Coding Ninja Question 
+num = int(input())
+
+eSum = 0
+oSum = 0
+
+while (num >0 ):
+    ld = num % 10
+    
+    if (ld %2 ==0):
+        eSum += ld
+        
+    else :
+        oSum += ld
+        
+    num = num // 10
+        
+    
+print(eSum,"",oSum)
