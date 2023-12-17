@@ -68,10 +68,75 @@ b
 '''
 
 def max_value_key(my_dict):
-    max = 0
-    for key,values in my_dict.items():
-        if values > max:
-            max = values    
-    return key
-
+    # maxV= max(my_dict,key = lambda k:my_dict[k])
+    
+    return max(my_dict,key = my_dict.get)
 print(max_value_key({'a': 5, 'b': 9, 'c': 2}))
+
+
+# Problem 4 
+'''
+Reverse Key-Value Pairs
+Define a function which takes as a parameter dictionary and returns a dictionary in which everse the key-value pairs are reversed.
+
+Example:
+
+my_dict = {'a': 1, 'b': 2, 'c': 3}
+reverse_dict(my_dict)
+Output:
+
+{1: 'a', 2: 'b', 3: 'c'}
+
+'''
+
+def reverse_dict(my_dict):
+    return {v: k for k, v in my_dict.items()}
+
+
+print(reverse_dict( {'a': 1, 'b': 2, 'c': 3}))
+
+
+# Problem 5
+'''
+
+Conditional Filter
+Define a function that takes a dictionary as a parameter and returns a dictionary with elements based on a condition.
+
+Example:
+
+my_dict = {'a': 1, 'b': 2, 'c': 3, 'd': 4} 
+filtered_dict = filter_dict(my_dict, lambda k, v: v % 2 == 0) 
+Output:
+
+{'b': 2, 'd': 4}
+'''
+
+def filter_dict(my_dict,condition):
+   return {k:v for k, v in my_dict.items() if condition(k,v)}
+        
+# print(filter_dict( {'a': 1, 'b': 2, 'c': 3, 'd': 4} ))
+
+
+# Problem 6
+'''
+Same Frequency
+Define a function which takes two lists as parameters and check if two given lists have the same frequency of elements.
+
+Example:
+
+list1 = [1, 2, 3, 2, 1]
+list2 = [3, 1, 2, 1, 3]
+check_same_frequency(list1, list2)
+Output:
+
+False
+'''
+
+def check_same_frequency(list1,list2):
+    for i in range (len(list2)):
+        if list1[i] == list2[i]:
+            return True
+    return False
+
+
+print(check_same_frequency( [1, 2, 3, 2, 1],[3, 1, 2, 1, 3]))
