@@ -109,3 +109,5 @@ def  dict_hashChar(n,a):
     
 # Test Run
 dict_hashChar('A',['a','b','a','a','c','A','A','C','B'])
+
+
