@@ -49,11 +49,22 @@ There are 3 inputs  n = length of array ; x = max number in the array ; arr = th
 from typing import List
 
 def countFrequency(n: int, m: int, edges: List[int]):
-    count = [0] * n
-#   unsolved   # 
-    return count
-# print(countFrequency(6, 9, [1, 3, 1, 9, 2, 7]))
+    count = {}
 
+    for i in range(n):
+        if edges[i] in count:
+            count[edges[i]] += 1
+        else:
+            count[edges[i]] = 1
+            
+    result = []
+    for j in range (1, n+1):
+        # print(f"{j} {count.get(j,0)}") # this is for printing both the index and its coresponding value
+        result.append(count.get(j,0))
+    return result
+
+# Example usage:
+print(countFrequency(10,14,[11,14,8,3,12,14,1,7,4,3]))
 
 # Leetcode Hashing Problem  1512.Number of Good Pairs
 def numIdentical(m):
@@ -64,4 +75,4 @@ def numIdentical(m):
                 count +=1 
     print (count)
     
-numIdentical([1,1,1,1])
+# numIdentical([1,1,1,1])
