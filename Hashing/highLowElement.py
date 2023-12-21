@@ -37,21 +37,44 @@ def getFrequencies(v: List[int]) -> List[int]:
     # Write your code here
     count = {}
     for i in range (len(v)):
-        if v[i] not in count :
-            count [v[i]] =1
+        if v[i] in count:
+            count[v[i]] += 1
         else:
-            count [v[i]] +=1
-    maX_key = max(count, key= count.get)
-    miN_key = min(count,key = count.get)
+            count[v[i]] = 1
+            
+    # for getting the max and min
+    maXvalue = max(count.values())
+    miNvalue = min(count.values())
+                                                                                    # Time Complexity : O(n +k)
+                                                                                    # Space Complexity: O(k)                                                                             
+    maXkey = [k for k,v in count.items() if v == maXvalue]
+    miNkey = [k for k,v in count.items() if v == miNvalue]
+        
+    maxElement = min(maXkey)
+    minElement = min(miNkey)
+    return maxElement ,minElement
+
+# Test Run
+# print(getFrequencies([10,10,10,3,3,3]))
+
+
+'''
+LeetCode : Problem 1838  Frequency of the Most Frequent Element
+
+'''
+def maxFrequency( nums: List[int], k: int) -> int:
+    count = {}
+    for i in range (len(nums)):
+        if nums[i] in count:
+            count[nums[i]] += 1 
+        else:
+            count[nums[i]] = 1
     
-    # using result because the site was giving error for using f string so had to add the max and min in a array and then output it.
-    result = []
-    if maX_key != miN_key :
-        result.append(maX_key)
-        result.append(miN_key)
-    else:
-      result.append(miN_key)
-      result.append(miN_key)
-    return result
-# UNSOLVED
-print(getFrequencies([10,10,10,3,3,3]))
+        '''
+        UNSOLVED
+        '''
+    
+  
+    return count
+
+print(maxFrequency([1,2,4],5))
