@@ -31,6 +31,9 @@ If there are multiple elements that have the highest frequency or lowest frequen
 
 '''
 
+from multiprocessing.util import DEFAULT_LOGGING_FORMAT
+from token import LEFTSHIFT
+from turtle import right
 from typing import List
 
 def getFrequencies(v: List[int]) -> List[int]: 
@@ -62,19 +65,50 @@ def getFrequencies(v: List[int]) -> List[int]:
 LeetCode : Problem 1838  Frequency of the Most Frequent Element
 
 '''
+    # this apporach works fine with 2 testcases but is fails for the nums= [1,4,8,13] and k = 5 : the output should be 2 but it is giving 4 
+'''
 def maxFrequency( nums: List[int], k: int) -> int:
-    count = {}
+    count = {k for k in range (1,k+1)}
+    maxKey = 0
+    pos = 1
+    
+    # this is doing the same task as max does 
     for i in range (len(nums)):
-        if nums[i] in count:
-            count[nums[i]] += 1 
+        if nums[i] > maxKey:
+            maxKey = nums[i] 
+        
+        if (maxKey - nums[i-1]) in count :
+            pos += 1
         else:
-            count[nums[i]] = 1
-    
-        '''
-        UNSOLVED
-        '''
-    
-  
-    return count
+            pos = 1  
 
+    return pos
 print(maxFrequency([1,2,4],5))
+    
+'''
+# you need to be familar with sliding window method for solving this problem 
+# here is the link for the same : https://youtu.be/MK-NZ4hN7rs
+class Solution:
+    def maxFrequency(self, nums: List[int], k: int) -> int:
+        nums.sort()
+        leftSide = maxValue = sum = 0
+        
+        for rightSide in range (len(nums)):
+            sum += nums[rightSide]
+            
+            while (rightSide - leftSide + 1) * nums[rightSide] - sum > k :
+                sum -= nums[leftSide]
+                leftSide += 1                                               
+                                                                                    #Time Complexity : O(n log n)
+                                                                                    #Space Complexity : O(1)
+                
+            maxValue = max(maxValue, rightSide - leftSide +1)
+        return maxValue
+        
+# Example usage:
+solution = Solution()
+print(solution.maxFrequency([1, 2, 4], 5))  # Output: 3
+print(solution.maxFrequency([3, 9, 6], 2))  # Output: 1
+print(solution.maxFrequency([1, 4, 8, 13], 5))  # Output: 2
+
+
