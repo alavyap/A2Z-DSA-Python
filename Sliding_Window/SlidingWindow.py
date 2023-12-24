@@ -1,7 +1,7 @@
 # It is a technique that aims to reduce the use of nested loops to a single loop
 
 # arr  = [2,9,31,-4,21,7] ; k =3
-# The below code is done without using sliding window, it is just a brute force technique
+# The below code is done using sliding window, max sum in the array this is from youtube channel tap academy "https://youtu.be/jhW7VwP2Djw"
 
 def slidingWindow (arr,k):
     n = len(arr)
@@ -22,3 +22,9 @@ def slidingWindow (arr,k):
     
 
 print(slidingWindow([2,9,31,-4,21,7], 3))
+
+
+
+
+    
+
