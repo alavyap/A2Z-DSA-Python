@@ -16,12 +16,6 @@ Output:
 -1 -1 -7 -15 -15 0 . 
 
 '''
-
-
-
-
-
-
 def firstNegative(arr,k):
     
     n = len(arr)

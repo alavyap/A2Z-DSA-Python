@@ -18,6 +18,7 @@ def maxSum(arr,k):
     
     for i in range (k):
         Sum += arr[i]
+       
     Max = Sum
         
     
