@@ -9,13 +9,17 @@ Output 1:
     C = [3, 3, 5, 5, 6, 7] . 
 '''
 
+from unittest import result
+
+
 def maxSub_Array(a,b):
-    # Part 1 >> we need to get a array and variable to store the max sum in the window 
-    # Part 2 >> we need to check the max number in the current window 
-    # Part 3 >> we need to store that 
-    # Part 4 >> return all the max numbers once the entire array has been checked 
-  
-          
+    
+    # this take the length of the array
+    N = len(a)
+    
+    # this stores the max of a window
+    result = []
+
           
           
 # Test Run 
