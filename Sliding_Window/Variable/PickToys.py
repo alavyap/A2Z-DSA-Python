@@ -8,10 +8,6 @@ abaccab
 Output: 4{acca} 
 
 '''
-
-from re import A
-
-
 def pickToy(arr):
     n = len(arr)
     # to store the last index of each character
