@@ -8,7 +8,7 @@ Explanation: After sorting the array is: 9, 13, 20, 24, 46, 52
 
 '''
 
-def selectionSort (arr):
+def selectionSort (arr):                              #Time and Space Complexity >> O(n^2) and O(1)
     n = len(arr)
     for i in range (n-1):
         min_index = i
@@ -29,7 +29,7 @@ Coding Ninja :- Sort the given unsorted array 'arr' of size 'N' in non-decreasin
 
 '''
 
-def selectionSort(arr):
+def selectionSort(arr):         #Time and Space Complexity >> O(n^2) & O(1)
     n = len(arr)
     for i in range (n-1):
         min_index = i

@@ -18,7 +18,7 @@ def bubbleSort(arr):
     Where as in the below code the number of iterations will keep decreasing as the last element get sorted 
     '''
     
-    for i in range (len(arr)-1):
+    for i in range (len(arr)-1):                #Time and Space Complexity >>  O(n^2) &O(1)
         for j in range (len(arr)-i-1):
             if arr[j] > arr[j+1]:
                 arr[j],arr[j+1] = arr[j+1],arr[j]
@@ -34,7 +34,7 @@ print(bubbleSort([13,46,24,52,20,9]))
 '''
 Coding Ninja
 '''
-def optimizedBubbleSort(arr):
+def optimizedBubbleSort(arr):                        #Time and Space Complexity >>  O(n){when the array is already sorted} &O(1)
     n = len(arr)
     for i in range (n-1):
         swapped = False
@@ -47,6 +47,8 @@ def optimizedBubbleSort(arr):
             break
         
     return arr
+
+
 
 # TestRun 
 print (optimizedBubbleSort([99,67,58,3,12]))

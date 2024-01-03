@@ -7,8 +7,8 @@ Output: 9,13,20,24,46,52
 Explanation: After sorting the array is: 9,13,20,24,46,52
 '''
 
-def insertionSort(arr):
-    n = len(arr)
+def insertionSort(arr):          #Time and Space Complexity >>  O(n^2) {O(n) if the array is already sorted} &O(1)
+    n = len(arr)                
     for i in range (1,n):
         key = arr[i]
         j = i-1
@@ -22,3 +22,5 @@ def insertionSort(arr):
 
 # TestRun
 print(insertionSort([13,46,24,52,20,9]))
+
+# Optimized Version of the above > there is a other called binary insertion sort
