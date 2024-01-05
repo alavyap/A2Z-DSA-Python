@@ -1,4 +1,5 @@
 '''
+Merge Sort Time Complexity is O(NLogN) and Space Complexity is O(N)
 Problem:  Given an array of size n, sort the array using Merge Sort.
 Example:
 
@@ -62,8 +63,8 @@ def singleMergeSort(arr):
         right_half = arr[mid:]
         
         # Recursive call to sort the left and the right halves
-        mergeSort(left_half)
-        mergeSort(right_half)
+        singleMergeSort(left_half)
+        singleMergeSort(right_half)
         
         
         i = j = k = 0
@@ -107,12 +108,13 @@ def Merge(arr,l,m,r):
     
     for i in range (0,n1):
         L[i] = arr[l+i]
+        
     for j in range (0, n2):
         R[j] = arr[m + 1+ j]
         
     i = 0 
     j = 0
-    k = 0
+    k = l
     
     while i < n1 and j < n2 :
         if L[i] <= R[j]:

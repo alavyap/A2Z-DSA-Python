@@ -24,7 +24,5 @@ def slidingWindow (arr,k):
 print(slidingWindow([2,9,31,-4,21,7], 3))
 
 
-
-
-    
+ 
 
