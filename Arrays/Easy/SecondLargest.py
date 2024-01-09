@@ -25,6 +25,7 @@ def getSecond(a,n):
 # Better Approach
 '''
 def getSecond (a,n):
+    ans = []
     if n == 0 or n == 1 :
         return (-1,-1)
     small = float('inf')
@@ -43,16 +44,21 @@ def getSecond (a,n):
         if a[i] > second_largest and a[i] != large :
             second_largest =  a[i]
             
+    ans.append(second_largest)
+    ans.append(second_small)
+            
     return (second_small, second_largest)
+    return ans
 '''
 
 # Optimal Approach
-import re
-
-
 def getSecond(a,n):
-    print(secondSmall(a,n))
-    print(secondLarge(a,n))
+    ans = []
+    second_largest = secondLarge(a,n)
+    second_smallest = secondSmall(a,n)
+    ans.append(second_largest)
+    ans.append(second_smallest)
+    return ans
     
 
 def secondSmall(a,n):
@@ -87,3 +93,27 @@ print(getSecond([1, 2, 3, 4, 5],5))
 # print(secondSmall([1, 2, 3, 4, 5],5))
 # print(secondLarge([1, 2, 3, 4, 5],5))
 # print(getSecond([1, 2, 4, 6, 7, 5],5))
+
+
+
+# With Time Complexity of O(N)
+def getSecond(a,n):
+    largest = a[0]
+    second_largest =  1
+    for num in  (a):
+        if num > largest:
+            second_largest = largest 
+            largest = num
+        else:
+            if num > second_largest :
+                second_largest = num 
+                
+    smallest = second_smallest = float('inf')
+    for num in (a):
+        if num < smallest :
+            second_smallest = smallest
+            smallest = num 
+        else:
+            if num < second_smallest :
+                second_smallest = num
+    return [second_largest,second_smallest]
