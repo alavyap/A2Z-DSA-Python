@@ -21,7 +21,9 @@ def removeDupli(arr,n):     #This is the Brute Force  with usign SET > which onl
     k = len(newSet)
     return k
 
-# Optimized Way
+# Optimized Way  
+# LeetCode
+
 def removeDuplicate(arr,n):
     if n == 0 or n == 1 :
         return
@@ -32,8 +34,9 @@ def removeDuplicate(arr,n):
                 k += 1
                 arr[k] = arr[i]
                 
-    return k+1
+    return k +1
 
 # Test Run
 print(removeDuplicate([1,2,2,2,3],5))
 # print(removeDupli([1,2,2,2,3],5))
+

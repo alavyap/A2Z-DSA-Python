@@ -11,18 +11,53 @@ Output: [2, 3, 4, 5, 1]
 Explanation: We moved the 2nd element to the 1st position, and 3rd element to the 2nd position, and 
 4th element to the 3rd position, and the 5th element to the 4th position, and move the 1st element to the 5th position.
 '''
-
-def rotateArray(arr,n):                 #Brute Force
+  #Brute Force
+def rotateArray(arr,n):               
     
     # Base Condition 
     if n == 0 or n == 1:
         return
     
     # Logic
-    for i in range (n):
-        arr[i] = arr[2]
-    return arr
+    temp = [0] * n 
+    for i in range (1,n):
+        temp[i-1] = arr[i]
+        
+    temp[n-1] = arr[0]
+    return temp
 
 # Test Run 
-print(rotateArray([1,2,3,4,5],5))
+# print(rotateArray([1,2,3,4,5],5))
     
+    
+# Optimal Approach 
+def leftRotate(arr,n):
+    x = arr[0]
+    for i in range (n-1):
+        arr[i] = arr[i+1]
+        
+    arr[n-1] = x
+    return arr
+    
+    
+# Test Run 
+print(leftRotate([1,2,3,4,5],5))
+
+
+# Leetcode 
+def rotate(nums,k):
+    n = len(nums)
+    k %= n  #This will take number of rotations 
+    def rrotate(l,r):
+        while l < r :
+            nums[l],nums[r] = nums[r],nums[l]
+            l += 1
+            r -= 1
+        
+        
+    rrotate(0,n-1)
+    rrotate(0,k-1)
+    rrotate(k,n-1)
+    return nums
+# Test Run 
+# print(rotate([1,2,3,4,5,6,7],3))

@@ -10,6 +10,8 @@ Explanation: From the array {1, 2, 3, 4, 5}, the largest element is 5.
 '''
 
 def largestElement(arr,n):
+    if n == 0 or n == 1 :
+        return
     max = arr[0]
     for i in range (1,n):
         if arr[i] > max:
@@ -17,4 +19,4 @@ def largestElement(arr,n):
     return max
 
 # Test Run
-print(largestElement([1,2,35,4,5],5)) 
+print(largestElement([19,2,3,4,5],5)) 

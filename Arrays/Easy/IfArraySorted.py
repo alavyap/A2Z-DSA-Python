@@ -14,6 +14,9 @@ The given array is sorted in non-decreasing order; hence the answer will be 1.
 
 
 
+from turtle import Turtle
+
+
 def isSorted(n,a):              #Brute Force
     if n == 0 or n == 1 :
         return 
@@ -22,19 +25,37 @@ def isSorted(n,a):              #Brute Force
         for j in range (i+1,n):
             if a[i] > a[j]:
                 return 0
-    return 1
+    return True
             
             
-def optisSorted(a,n):
-    if n == 0 or n == 1 :
-        return
-    for i in range (1,n):
-        if a[i] > a[i-1]:
+def optisSorted(a, n):
+    if n == 0 or n == 1:
+        return 
+
+    for i in range(1, n):
+        if a[i] < a[i - 1]:
             return 0
+
     return 1
-            
+
 # Test Run 
-print(isSorted(4, [0,0,0,1]))
+print(optisSorted(3, [1,2,3]))
 
 
 # LeetCOde
+
+def check(nums):
+    count  = 0 
+    for i in range (len(nums)):
+        if nums[i] < nums[i-1]:
+            count += 1
+    
+    if count <= 1 :
+        return True
+    else:
+        return False
+    
+
+
+# Test Run
+print(check([1,2,3]))
