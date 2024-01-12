@@ -41,7 +41,7 @@ def leftRotate(arr,n):
     
     
 # Test Run 
-print(leftRotate([1,2,3,4,5],5))
+# print(leftRotate([1,2,3,4,5],5))
 
 
 # Leetcode 
@@ -61,3 +61,27 @@ def rotate(nums,k):
     return nums
 # Test Run 
 # print(rotate([1,2,3,4,5,6,7],3))
+
+
+
+# def Lrotate(arr,k):
+#     n = len(arr)
+#     k %= n
+    
+#     def rotations(l,r):
+#         arr[l],arr[r] = arr[r],arr[l]
+#         l += 1
+#         r -= 1 
+        
+#     # rotations(0,k-1)
+#     # rotations(k,n-k)
+    
+#     # OR this for left rotation
+#     rotations(0, n - 1)
+#     rotations(0, n - k - 1)
+#     rotations(n - k, n - 1)
+    
+#     return arr
+
+# # Test Run 
+# print(Lrotate([7,5,2,11,2,43,1,1],2))
