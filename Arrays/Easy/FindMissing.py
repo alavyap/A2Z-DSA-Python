@@ -17,10 +17,22 @@ def findMissing(arr,n):
         if arr[j] != num[j] :
             return num[j]
     
-    
-    # return  num
         
 # Test Run
-print(findMissing([1,2,4,5],5))
+print(findMissing([1,2,3,5],5))
     
+# Optimal Approach 
+
+def findmissing(nums,N):
     
+    sum1 =  (N*(N+1)) //2
+    sum2 = 0
+   
+    for i in range (len(nums)):
+        sum2 += nums[i]
+        
+    return sum1 - sum2
+        
+
+# Test Run 
+# print(findmissing([1,2,4,5],5))
