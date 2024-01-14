@@ -23,7 +23,7 @@ def rotateBy(arr,k):
     return arr
 # Test Run 
 # print(rotateBy([7,5,2,11,2,43,1,1],2))
-
+ 
 # Sample Output :
 # 2 11 2 43 1 1 7 5
 # Explanation :
