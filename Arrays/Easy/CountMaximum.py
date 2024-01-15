@@ -17,7 +17,7 @@ def countMax(arr):
      
     for i in range (n):
         if arr[i] == 1 :
-            currentCount += 1
+            currentCount += 1 
             if maxCount < currentCount :
                 maxCount = currentCount 
        
@@ -28,7 +28,7 @@ def countMax(arr):
 # Test Run
 print(countMax([1,0,1,1,0,1]))
 
-# Coding Ninja
+# Coding Ninja > GIven there are m 1's that are changed on 0 find the total number of consecutive 1's
 
 def countOne(n,m,arr):
     ans=0
