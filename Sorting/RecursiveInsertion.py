@@ -25,3 +25,21 @@ def recursiveInsertion(arr,n):
 # Test Run
 
 print(recursiveInsertion([13,46,24,52,20,9],6))
+
+
+# Coding Ninja
+
+def insertionSortHelper(arr,i,n):
+    if i == n :
+        return 
+    j = i 
+    
+    while j > 0 and arr[j-1] > arr[j] :
+        arr[j], arr[j-1] = arr[j-1], arr[j]
+        j -= 1
+        
+        insertionSortHelper(arr,i +1, n)
+        
+def insertionSort(arr):
+    n = len(arr)
+    insertionSortHelper(arr,0,n)

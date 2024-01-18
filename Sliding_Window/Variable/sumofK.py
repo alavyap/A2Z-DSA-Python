@@ -22,7 +22,7 @@ def longest_subarray_sum(arr,k):
     for i in range (n):
         current_sum += arr[i]
         
-    # check if (current_sum -k) is present in the prefix sun dictionary
+    # check if (current_sum -k) is present in the prefix sum dictionary
     
         if (current_sum -k) in prefix_sum :
             # max_length = max(max_length, i-prefix_sum[current_sum -k])
@@ -39,4 +39,4 @@ def longest_subarray_sum(arr,k):
 
 
 # Test Run
-print (longest_subarray_sum([4,1,1,1,2,3,5],5))
+print (longest_subarray_sum([1,2,3,1,1,1,1],3))

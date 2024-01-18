@@ -13,21 +13,116 @@ Result: YES (for 1st variant)
 Explanation: arr[1] + arr[3] = 14. So, the answer is “YES” for the first variant and [1, 3] for 2nd variant.
 
 '''
+# Brute Force
+# 1st Variant
+from venv import CORE_VENV_DEPS
+
+
 def twoSum (arr,k):
     n = len(arr)
-    Sum = 0 
-    left,right = 0,0
-    while left < right and right < n:
-        left = arr[0]
-        right  =arr[1]
-        if k == left+right :
-            return ("YES")    
-        else:
-            left += 1
-            right +=1 
-    return ("NO")
-        
+    for i in range  (n):
+        for j in range (i+1,n):
+            sum = arr[i] + arr[j]
+            if sum == k :
+                return "Yes"
+    return "No"
             
-            
+# 2nd Variant 
+def two_sum(arr,k):
+    n = len(arr)
+    for i in range (n):
+        for j in range (i+1,n):
+            sum = arr[i] +arr[j] 
+            if sum == k :
+                return [i,j]
+    return [-1,-1]
 # TestRun
-print(twoSum([2,6,5,8,11],14))
+# print(twoSum([2,6,5,8,11],14))
+# print(two_sum([2,6,5,8,11],14))
+
+
+# Better Approach
+def TwoSum (arr,k):
+    n = len(arr)
+    store = {}
+    for i in range (n):
+        if arr[i] in store :
+            store[arr[i]] += 1
+        else :
+            store[arr[i]] = 1
+             
+        sum = k -arr[i] 
+    #     if sum in store.keys():
+    #         return "Yes"
+    # return "NO"
+    
+    
+    # 2nd Variant 
+        if sum in store :
+            return [store[sum],i]
+    return [-1,-1]  
+
+# Test Run 
+# print(TwoSum([2,6,5,8,11],14))
+
+
+# Optimized Approach 
+def TwosuM (arr,k):
+    n = len(arr)
+    # Sorting the array > is required if it is just asking YES or NO
+    # for i in range (n):
+    #     for j in range (i+1,n):
+    #         if arr[i] >arr[j]:
+    #             arr[i],arr[j] = arr[j],arr[i]
+                
+    arr.sort()
+    # two sum 
+    l = 0 
+    r = n -1
+    while (l <r):
+    #     sum = arr[l] +arr[r]
+    #     if sum == k :
+    #         return "Yes"
+    #     elif (sum < k):
+    #         l += 1
+    #     else :
+    #         r -= 1
+    # return "No"
+    
+    # 2nd Varient 
+            sum = arr[l] + arr[r]
+            if sum == k:
+                return [l,r]
+            elif (sum < k):
+                l += 1
+            else:
+                r -= 1
+    return [-1,-1]
+
+    
+    
+
+# Test Run          
+# print(TwosuM([2,6,5,8,11],14))
+# print(TwosuM([3,2,4],6))
+
+
+
+
+'''
+Excellent Solution this is able to solve both the variants of the question  on Coding NInja and LeetCode
+'''
+
+def correctTwoSum (arr,k):
+    n = len(arr)
+    store = {}
+    for el in range (n):
+        remain = k - arr[el]
+        if remain in store :
+            return [store[remain],el]
+        store[arr[el]] = el
+    return []
+
+# Test Run
+print (correctTwoSum([3,2,4],6))
+

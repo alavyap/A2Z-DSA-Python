@@ -27,22 +27,55 @@ def longestsubArray(arr,k):
     return length
 
 # Test Run
-print(longestsubArray([1, 2, 3, 1, 1, 1, 1],3))
+# print(longestsubArray([1, 2, 3, 1, 1, 1, 1],3))
 
 
 
+# Optimal Approach  >This is a sliding window problem but the platforms would not accept is so doing just as arrays
 
-
-
-
-
-# Optimal Approach
-# def longestSubarray(arr,k):
+def longestSubarray(arr,k):
+    n = len(arr)
+    right,left = 0,0
+    Sum = arr[0]
+    maxLen = 0
+    while right < n :
+        while left <= right and Sum > k:
+            Sum -= arr[left]
+            left += 1
+        
+        if Sum == k :
+            maxLen = max(maxLen, right-left + 1)
+            
+        right += 1
+        if right < n :
+            Sum += arr[right]         
+    return maxLen
     
     
     
-    
-    
+
     
 # Test Run
 # print(longestSubarray([1, 2, 3, 1, 1, 1, 1],3))
+
+# LeetCode 
+def subarraySum(nums,k):
+    Sum = 0 
+    preSum = 0
+    storeSum = {0:1}
+    
+    for i in nums :
+        preSum = preSum + i
+        
+        if (preSum - k) in storeSum :
+            Sum = Sum + storeSum[preSum - k] 
+            
+        if preSum not in storeSum :
+            storeSum[preSum] = i
+            
+        else:
+            storeSum[preSum] = storeSum[preSum] + 1
+    return Sum
+
+# Test Run 
+print(subarraySum([1, 2, 3, 1, 1, 1, 1],3))

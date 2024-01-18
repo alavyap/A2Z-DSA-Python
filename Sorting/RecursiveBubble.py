@@ -21,7 +21,7 @@ def recursiveBubble(arr,n):
 
 
 # Test Run 
-# print(recursiveBubble([13,46,24,52,20,9],6))
+print(recursiveBubble([13,46,24,52,20,9],6))
 
 
 
