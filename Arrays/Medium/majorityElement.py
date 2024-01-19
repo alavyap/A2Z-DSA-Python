@@ -64,6 +64,8 @@ def majorityElement(nums):
     return -1
     
 '''
+# Time Cpmplexity >> O(N)
+# Space Complexity >> O(1)
 def majorityElement(nums):
     count = 0
     majority = None 
@@ -76,13 +78,5 @@ def majorityElement(nums):
         else :
             count -= 1
     return majority
-
-  
-        
-    
-    
-    
-    
-    
 # Test Run
 print (majorityElement([2,2,1,1,1,2,2]))

@@ -27,11 +27,14 @@ def sortArray(arr):
 # print(sortArray([2,0,2,1,1,0]))
 
 # Optimal Approach 
+
 def arraySort(nums):
     n = len(nums)
     low = 0
     mid = 0
     high = n-1
+    # Time Cpmplexity >> O(N)
+    # Space Complexity >> O(1)
     while mid <= high:
         if nums[mid] == 0 :
             nums[low],nums[mid] = nums[mid],nums[low]

@@ -112,6 +112,8 @@ def TwosuM (arr,k):
 '''
 Excellent Solution this is able to solve both the variants of the question  on Coding NInja and LeetCode
 '''
+# Time Cpmplexity >> O(N)
+# Space Complexity >> O(N)
 
 def correctTwoSum (arr,k):
     n = len(arr)
