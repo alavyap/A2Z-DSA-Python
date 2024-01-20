@@ -35,6 +35,9 @@ def largestSum(arr):
 
 # Optimal Approach
 def kadenAlgo (nums):
+    
+    # Time Complexity = O(N)
+    # Space Complexity = O(1)
     n = len(nums)
     # If the question is asking to return negative sum, in a negative array then we use  Max = float('-inf')
     
@@ -61,6 +64,8 @@ There might be more than one subarray with the maximum sum. We need to print any
 '''
 
 def folloUp (arr):
+    # Time Complexity = O(N)
+    # Space Complexity = O(1)
     n = len(arr)
     ansStart = ansEnd = -1
     maxi = total = 0 

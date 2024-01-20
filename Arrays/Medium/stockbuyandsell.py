@@ -51,6 +51,8 @@ def CNstock (prices):
 
 # Optimal Approach 
 def stocks(prices):
+# Time Complexity = O(N)
+# Space Complexity = O(1)
     n = len(prices)
     profit = 0
     buy = float('inf')

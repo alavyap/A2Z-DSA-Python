@@ -10,8 +10,11 @@ Explanation: Subarrays whose sum = '3' are:
 [1, 2], [3], [1, 1, 1] and [1, 1, 1]
 Here, the length of the longest subarray is 3, which is our final answer.
 '''
-
+# Optimal  Approach 
 def longestSubarray(a,k):
+        
+    # Time Complexity = O(N)
+    # Space Complexity = O(N)
     n = len(a)
     max_len = 0 
     sum_dict = {} #dictionary to store prefix sum and its corresponding  index 
