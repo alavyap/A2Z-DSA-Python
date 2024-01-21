@@ -12,9 +12,6 @@ Explanation: When we just count the occurrences of each number and compare with 
 THis Problem uses "Moore's Voting Algorithm"
 '''
 # Brute Force 
-from os import major
-
-
 def majority(nums):
     n = len(nums)
     mid = n//2

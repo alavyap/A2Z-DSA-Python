@@ -9,9 +9,6 @@ THis contains both Positives and Negatives in the array
 '''
 
 # Brute Force 
-from operator import length_hint
-
-
 def getLongestSubarray(nums,k):
     n = len(nums)
     for i in range (n):
@@ -23,7 +20,10 @@ def getLongestSubarray(nums,k):
             length = j-i+1
             
     return length
-    
+
+
+
+# Optimal Approach 
 def LongestSubarray(nums,k):
     n = len(nums)
     preSum = {}

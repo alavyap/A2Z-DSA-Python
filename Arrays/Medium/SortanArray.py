@@ -10,7 +10,6 @@ Input: nums = [2,0,2,1,1,0]
 Output: [0,0,1,1,2,2]
 
 
-This is a variation of the popular Dutch National Flag Algorithm
 '''
 
 # Brute Force 
@@ -27,6 +26,7 @@ def sortArray(arr):
 # print(sortArray([2,0,2,1,1,0]))
 
 # Optimal Approach 
+# This is a variation of the popular Dutch National Flag Algorithm
 
 def arraySort(nums):
     n = len(nums)
