@@ -23,6 +23,19 @@ To maintain relative ordering, 1 must occur before 2, and -4 must occur before -
 '''
 
 def reArrange (arr,n):
-    count = 0 
-    Pcount = 0 
+    Ncount = []  
+    Pcount = []
+    
+    for i in range (n):
+        if arr[i] < 0 :
+            Ncount.append(arr[i])
+            
+        else:
+            Pcount.append(arr[i])
+            
+    # return Pcount
+    # Here we will add the both the arrays in such a way what both element are alternate to each other
+
+# Test Run 
+print(reArrange([1,2,-4,-5],4))
     
