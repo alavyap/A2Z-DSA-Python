@@ -11,6 +11,7 @@ Explanation: The longest consecutive subsequence is 1, 2, 3, and 4.
 '''
 
 # Brute Force 
+# here the time complexity is O(n logN ) and O(N^2) if we use the for loop for sorting 
 def consecutive_bf(a):
     n = len(a)
     # Sorting the array in ascending order 
@@ -20,7 +21,7 @@ def consecutive_bf(a):
                 a[i], a[j] = a[j],a[i]
     # a.sort() 
     '''
-    we can just use sort method to sort the array which brings the timecomplexity to  O(n log N) for O(n^2)
+    we can just use sort method to sort the array which brings the time complexity to  O(n log N) for O(n^2)
     '''
     # Now checking for longest consectuive 
     count  = 1
@@ -35,26 +36,27 @@ def consecutive_bf(a):
     return max_count
 
 
-# Optimal Approach 
+
+'''
+Also the time complexity of O(2 *N) is considered as O(N).
+It is greater then O(N * Log(N)) 
+'''
+
+# Optimal Approach  >>  
 def consecutive(a):
-    n = len(a)
-    count = 1
-    max_count = 0
-    no_dupli = set()
-    for i in range (n):
-        no_dupli.add(a[i])
-        
-    for i in range (n):
-        if a[i] in no_dupli :
-            currentEle = a[i]
-            
-        while currentEle in no_dupli :
-            currentEle += 1
-            
-        curLen = currentEle - a[i] + 1
-    max_count = max(max_count,curLen)
+  
+    maxCount = 0 
+    # n = len(a)
+    hashSet = set(a)
     
-    return max_count
+    for n in hashSet:
+        if (n-1) not in hashSet:
+            ans = 1 
+            while (n+ans) in hashSet:
+                ans += 1 
+            maxCount = max(maxCount,ans)
+        return maxCount
     
+
 # Test Run 
 print (consecutive( [15, 6, 2, 1, 16, 4, 2, 29, 9, 12, 8, 5, 14, 21, 8, 12, 17, 16, 6, 26, 3]))
