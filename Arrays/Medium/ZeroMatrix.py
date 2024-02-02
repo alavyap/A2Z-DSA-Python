@@ -57,9 +57,44 @@ def betterMatrix(matrix,n,m):
 
 
 # Test Run 
-print (betterMatrix([[0,1,2,0],[3,4,5,2],[1,3,1,5]],3,4))
+# print (betterMatrix([[0,1,2,0],[3,4,5,2],[1,3,1,5]],3,4))
 
 
 # Optimal Approach n = is rows and m = is coloums
 def optimalMatrix(matrix,n,m):
+    col0 = 1
+    for i in range (n):
+        for j in range (m):
+            if matrix[i][j] == 0 :
+                # mark the i-th row
+                matrix[i][0] = 0
+                
+                # mark the j-th index 
+                if j != 0 :
+                    matrix[0][j] = 0 
+                else :
+                    col0= 0 
+                    
+    # Step 2 > to mark with 0 from (1,1) to (n-1,m)
+    for i in range (1,n):
+        for j in range (1,m):
+            if matrix[i][j] != 0 :
+                
+                # check for the col and row 
+                if matrix[i][0] == 0 or matrix[0][j] ==0  :
+                    matrix[i][j] = 0
+                    
+    # Step 3 : Finally mark the 1st col and then 1st  row 
+    if matrix[0][0] == 0 :
+        for j in range (m):
+            matrix[0][j] = 0
+    if col0 == 0 :
+        for i in range (n):
+            matrix[i][0] = 0 
+    return matrix 
+
+
+# Test Run 
+print (optimalMatrix([[0,1,2,0],[3,4,5,2],[1,3,1,5]],3,4))
+
     
