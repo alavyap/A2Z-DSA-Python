@@ -79,7 +79,7 @@ def threePascal(N,r,c):
     '''
     # Optimal Approach 
     # Time Complexity = O(n^2) Space Complexity = O(1)
-    ans= []
+    
     for row in range (1,N+1):
         ans.append(v3Helper(row))
     return ans 
