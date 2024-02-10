@@ -81,11 +81,12 @@ def sumOA (nums, target):
         for j in range (i+1, n):
             if j > i+1  and nums[j] == nums[j - 1]:
                 continue 
-            
+             
             k = j+1 
             l = n-1 
             
             while (k < l):
+                
                 tempSum = nums[i] +nums[j] +nums[k] + nums[l]
                 
                 if tempSum == target :
@@ -93,7 +94,6 @@ def sumOA (nums, target):
                     ans.append(tempArr)
                     k += 1 
                     l -= 1
-                    
                 
                     # Skiping the duplicate values 
                     while (k <l ) and nums[k] == nums[k-1]:
