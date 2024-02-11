@@ -15,9 +15,6 @@ Explanation: arr[1] + arr[3] = 14. So, the answer is “YES” for the first var
 '''
 # Brute Force
 # 1st Variant
-from venv import CORE_VENV_DEPS
-
-
 def twoSum (arr,k):
     n = len(arr)
     for i in range  (n):

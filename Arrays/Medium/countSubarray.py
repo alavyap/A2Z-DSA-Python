@@ -16,7 +16,7 @@ Explanation: The subarrays that sum up to 6 are [3, 1, 2] and [2, 4].
 from collections import defaultdict
 
 
-
+# Brute Force 
 def countSub(arr,s):
     n = len(arr)
     count = 0

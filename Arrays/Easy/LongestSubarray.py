@@ -10,9 +10,6 @@ Because  the lenght of window is not defined but the sum of the window should be
 '''
 
 # Brute Force 
-from operator import length_hint
-
-
 def longestsubArray(arr,k):
     n = len(arr)
     length = 0
@@ -71,7 +68,7 @@ def subarraySum(nums,k):
             Sum = Sum + storeSum[preSum - k] 
             
         if preSum not in storeSum :
-            storeSum[preSum] = i
+            storeSum[preSum] = 1
             
         else:
             storeSum[preSum] = storeSum[preSum] + 1

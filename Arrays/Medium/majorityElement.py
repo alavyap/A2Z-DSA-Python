@@ -30,12 +30,9 @@ def majority(nums):
 # Test Run 
 # print (majority([2,2,1,1,1,2,2]))
 
-# Optimal Approach
-   
-
-   
+# Optimal Approach  
 '''
-Moore's Voting Algorithm
+Boyer Moore's Voting Algorithm
 
 
 def majorityElement(nums):
