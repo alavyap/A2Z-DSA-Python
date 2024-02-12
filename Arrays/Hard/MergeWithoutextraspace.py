@@ -94,9 +94,10 @@ def mergeandSort(nums1,nums2):
 
 # Helper Function 
 def swapper(nums1,nums2,ind1,ind2):
-    if nums1[ind1] > nums2[ind2]:
-        nums1[ind1], nums2[ind2] = nums2[ind2], nums1[ind1]
-        
+    if 0 <= ind1 < len(nums1) and 0 <= ind2 < len(nums2):
+        if nums1[ind1] > nums2[ind2]:
+            nums1[ind1], nums2[ind2] = nums2[ind2], nums1[ind1]
+            
 
 # Main function 
 def mergewithGap(nums1,nums2):
@@ -139,3 +140,31 @@ def mergewithGap(nums1,nums2):
 
 # Test Run
 print (mergewithGap([1,4,8,10],[2,3,9]))
+
+
+
+# LeetCode 
+def leetMerge (nums1,nums2):
+    n = len(nums1)
+    m = len(nums2)
+    
+    left = n - 1
+    right = m - 1
+    
+    i = m+n - 1 
+    
+    while (right >= 0):
+        if left >= 0  and nums1[left] > nums2[right]:
+            nums1[i] = nums1[left]
+            i -= 1 
+            left -= 1 
+            
+        else: 
+            nums1[i] = nums2[right]
+            
+            i -= 1 
+            right -= 1 
+    return nums1,nums2 
+
+# Test Run 
+# print (leetMerge([1,4,8,10],[2,3,9]))
