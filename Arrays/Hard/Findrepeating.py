@@ -116,4 +116,55 @@ def opMath(arr):
 
 
 # Test Run 
-print (opMath([3,1,2,5,3]))
+# print (opMath([3,1,2,5,3])) 
+
+
+# Optimal Approach >> Using XOR
+def xorOa(arr):
+    n = len(arr)
+    xor = 0 
+    
+    for i in range (n):
+        xor = xor ^ arr[i] 
+        xor = xor ^ (i+1)
+
+
+    # Finding the differentiating bit number 
+    number = (xor & ~(xor -1 ))
+    
+    # Group the number
+    zero = 0 
+    one = 0 
+    
+    for i in range (n):
+        
+        if ((arr[i] & number) != 0 ):
+            one = one ^ arr[i] 
+        
+        else: 
+            zero = zero ^ arr[i]
+            
+            
+            
+    for i in range (1, n+1):
+        if ((i & number) != 0 ):
+            one = one ^ i 
+        else :
+            zero = zero ^ i 
+            
+            
+        
+    # Identify the numbers 
+    count = 0 
+    for i in range (n):
+        if (arr[i] == zero):
+            count += 1 
+            
+            
+    if (count == 2) :
+        return [zero,one]
+    return[one,zero]
+
+
+# Test Run 
+print (xorOa([3,1,2,5,3])) 

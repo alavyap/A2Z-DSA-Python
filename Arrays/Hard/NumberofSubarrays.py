@@ -57,8 +57,7 @@ def optCountSub(arr,target):
     for i in range (n):
         Xor = Xor ^ arr[i] 
         
-        x = Xor ^ target 
-        
+        x = Xor ^ target  
         count += mpp[x]
         
         mpp[Xor] += 1 
@@ -67,3 +66,4 @@ def optCountSub(arr,target):
 
 # Test Run 
 print(optCountSub([4,2,2,6,4],6))
+
