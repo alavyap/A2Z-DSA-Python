@@ -16,7 +16,6 @@ For above given array there is 4 + 3 + 2 + 1 = 10 inversions.
 
 # Brute Force 
 
-import math
 
 def bf (arr):
     n = len(arr)
@@ -42,7 +41,7 @@ def merger( arr,low,high):
     if low >= high :
         return count 
     
-    mid = math.floor((low + high) / 2)
+    mid = ((low + high) // 2)
     
     count += merger(arr,low,mid)
     count += merger(arr,mid +1, high)
