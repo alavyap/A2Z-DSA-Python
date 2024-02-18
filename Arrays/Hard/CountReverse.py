@@ -35,6 +35,7 @@ def op (arr):
     return helper(arr,0,n-1)
 
 
+# Helper Function 
 def helper(arr,low,high):
     count = 0 
     if low >= high:
@@ -93,7 +94,6 @@ def merge (arr,low,mid,high):
 
 
 
-# Helper Function 
 
 # Test Run 
 print(op ([1,3,2,3,1]))

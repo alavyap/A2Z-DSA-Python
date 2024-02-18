@@ -52,14 +52,6 @@ def mergeOverlapping(arr):
             ans[-1][1] = max(ans[-1][1] , arr[i][1])
     return ans
 
-    # arr.sort() 
-    # n = len(arr)
-    # ans = [] 
-    # for i in range (n):
-    #     if not ans or  arr[i][0] > ans[-1][1] :
-    #         ans.append(arr[i])
-    #     else :
-    #         ans[-1][1] = max(arr[i][1],ans[-1][1])
-    # return ans 
+    
 # Test Run 
 print(mergeOverlapping([[1,3],[2,6],[8,10],[15,18]]))

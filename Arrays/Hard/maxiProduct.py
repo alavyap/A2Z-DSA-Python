@@ -13,16 +13,61 @@ Explanation:  In the given array, we can see (-4)*(-5) gives maximum product val
 # Brute Force 
 def bf (arr):
     n = len(arr)
-    maxi = 0 
-    pro = 1
-    for i in range (n):
+    maxi = arr[0]
+    for i in range (n-1):
+        pro = arr[i]
         for j in range (i+1,n):
-            pro = arr[i] *arr[j]
-            
+            maxi = max(maxi,pro)
+            pro *= arr[j]
         if maxi < pro :
             maxi = pro
     return maxi
 
 # Test Run 
 # print(bf([1,2,-3,0,-4,-5]))
-print(bf([1,-2,3,-4]))
+# print(bf([1,-2,3,-4]))
+
+# Optimal Approach >> this better solution 
+def op(arr):
+    n = len(arr)
+    prefix = 1 
+    suffix = 1
+    result = float('-inf') 
+    for i in range (n):
+        if prefix == 0 :
+            prefix = 1 
+        if suffix ==  0 :
+            suffix = 1 
+        prefix *= arr[i] 
+        suffix *= arr[n-i-1]
+        
+        result = max(result , max(prefix,suffix))
+    return result
+
+# Test Run 
+# print(op ([1,2,-3,0,-4,-5]))
+
+
+
+# Kadens Algorithm 
+
+def kadenOP(arr):
+    n = len(arr)
+    pro1 = arr[0] 
+    pro2 = arr[0] 
+    ans = arr[0] 
+    
+    for i in range (1,n):
+        temp = max(arr[i],pro1 * arr[i], pro2* arr[i])
+        
+        pro2 = min (arr[i], pro1 *arr[i], pro2 * arr[i])
+        
+        pro1 = temp 
+        
+        ans = max(ans,pro1)
+        
+    return ans
+
+
+# Test Run 
+print(kadenOP ([1,2,-3,0,-4,-5]))
