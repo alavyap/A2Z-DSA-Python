@@ -11,7 +11,7 @@ Result: 3
 Explanation: 6 is not present in the array. So, if we will insert 6 in the 3rd index(0-based indexing), the array will still be sorted. {1,2,4,6,7}.
 '''
 
-# Brute Force 
+# Onlt way to solve
 def brute (arr,x):
     n = len(arr)
     low = 0
@@ -20,7 +20,12 @@ def brute (arr,x):
     
     while (low <= high) :
         mid = (low + high) // 2 
-        
+        if arr[mid] >= x :
+            ans = mid
+            high = mid - 1 
+            
+        else  :
+            low = mid +1 
     return ans 
 
 # Test Run 
