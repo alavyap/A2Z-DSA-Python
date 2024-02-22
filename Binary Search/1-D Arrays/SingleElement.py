@@ -51,7 +51,7 @@ def optimal(arr):
     low = 1 
     high = n-2 
     
-    # Base Case 
+    # Edge Case 
     if n == 1 :
         return arr[0] 
     
@@ -72,7 +72,7 @@ def optimal(arr):
         else :
             high = mid -1 
             
-    # Edge Case 
+    # Dummy Case 
     return -1
     
 # Test Run 

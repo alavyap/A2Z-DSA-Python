@@ -10,7 +10,6 @@ Input Format: arr = [4,5,6,7,0,1,2,3]
 Result: 0
 Explanation: Here, the element 0 is the minimum element in the array.
 '''
-import sys
 # Brute Force 
 def brute (arr):
     n = len(arr)
@@ -30,7 +29,7 @@ def optimal(arr):
     n = len(arr)
     low = 0 
     high = n - 1 
-    ans = sys.maxsize
+    ans = float('inf')
     
     while (low <= high):
         mid = (low + high) // 2
