@@ -12,8 +12,6 @@ Explanation: The floor of 5 in the array is 4, and the ceiling of 5 in the array
 '''
 
 # Solution 
-from ast import main
-import math
 def mainFunc (arr,x):
     n = len(arr)
     floor = findFloor (arr,n,x)

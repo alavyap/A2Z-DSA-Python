@@ -29,4 +29,53 @@ def brute (arr):
     return -1
 
 # Test Run 
-print(brute([1,1,2,2,3,3,4,5,5,6,6]))
+# print(brute([1,1,2,2,3,3,4,5,5,6,6]))
+
+# Brute Force Type 2 
+
+def bruteT(arr):
+    n = len(arr)
+    ans = 0 
+    for i in range (n):
+        ans = ans ^ arr[i] 
+    return ans 
+
+# Test Run 
+# print(bruteT([1,1,2,2,3,3,4,5,5,6,6]))
+
+
+# Optimal Approach 
+def optimal(arr):
+    n = len(arr)
+    
+    low = 1 
+    high = n-2 
+    
+    # Base Case 
+    if n == 1 :
+        return arr[0] 
+    
+    if arr[0] != arr[1]:
+        return arr[0] 
+    
+    if arr[n-1] != arr[n-2]:
+        return arr[n-1]
+    
+    while (low <= high):
+        mid = (low + high) // 2 
+        
+        if arr[mid] != arr[mid -1] and arr[mid] != arr[mid +1 ]:
+            return arr[mid]
+        
+        if (mid % 2 == 0 and arr[mid] == arr[mid+1]) or (mid %2 == 1 and arr[mid] == arr[mid -1 ]) :
+            low  = mid + 1 
+        else :
+            high = mid -1 
+            
+    # Edge Case 
+    return -1
+    
+# Test Run 
+print(optimal([1,1,2,2,3,3,4,5,5,6,6]))
+
+            
