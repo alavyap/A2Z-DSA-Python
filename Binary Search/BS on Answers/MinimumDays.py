@@ -13,60 +13,84 @@ Explanation: On the 12th the first 4 flowers and the last 3 flowers would have a
 So, we can easily make 2 bouquets, one with the first 3 and another with the last 3 flowers.
 '''
 # Brute Force 
-from math import floor
-
 
 def brute(arr,r,b):
     n = len(arr)
-    totalF = r * b 
-    maxi = funcMax(arr,n)
-    mini = funcMin(arr,n)
+    totalF = r * b
     
     # Edge Case 
     if  n  < totalF :
         return -1
+    maxi = float('-inf') 
+    mini = float('inf')
+    for i in range (n):
+        maxi = max(maxi,arr[i])
+        mini = min(mini,arr[i])
     
     # return maxi,mini
     for i in range (mini, maxi+1):
-        if possible(arr,r,b,n,i):
+        if possible(arr,r,b,i):
             return i 
     return -1
     
-
-
-    
-    
-# Function to find the max element in the array 
-def funcMax(arr,n):
-    maxi = float('-inf')
-    
-    for i in range (n) :
-        if maxi < arr[i] :
-            maxi = arr[i] 
-            
-    return maxi 
-    
-# Function to find the min element in the array 
-def funcMin(arr,n):
-    mini = float('inf')
-    
-    for i in range (n) :
-        if mini > arr[i] :
-            mini = arr[i] 
-            
-    return mini 
-
 # This function is to find the possible boquets 
-def possible (arr,r,b,n,day):
+def possible (arr,r,b,day):
+    n = len(arr)
     cnt = 0 
     noOf = 0
     for i in range (n):
         if arr[i] <= day :
             cnt += 1
         else: 
-            noOf += (cnt // b)
+            noOf += (cnt // r)
             cnt = 0
-    noOf += cnt // b
-    return noOf >= r
+    noOf += cnt // r
+    return noOf >= b
+
+
 # Test Run 
-print(brute([7,7,7,7,13,11,12,7],2,3))
+# print(brute([7,7,7,7,13,11,12,7],2,3))
+
+
+# Optimal Approach 
+
+def optimal (arr,m,k):
+    n = len(arr)
+    totalP = m * k
+    
+    if n < totalP :
+        return -1 
+    
+    low = float('inf')
+    high = float('-inf')
+    
+    for i in range (n):
+        low = min(low,arr[i])
+        high = max(high,arr[i])
+        
+    while (low <= high):
+        mid = (low + high) // 2 
+        
+        if possible (arr,m,k,mid) :
+            high = mid -1 
+        else :
+            low = mid + 1
+        
+    return low 
+
+# Helper Function 
+def possible(arr,m,k,day):
+    n = len(arr)
+    cnt = 0 
+    noOf = 0 
+    for i in  range (n):
+        if arr[i] <= day :
+            cnt += 1 
+        else :
+            noOf += cnt // k
+            cnt = 0 
+    noOf += cnt // k 
+    return noOf >= m
+
+# Test Run 
+print(optimal([7,7,7,7,13,11,12,7],2,3))
