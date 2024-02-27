@@ -13,23 +13,31 @@ Explanation: The missing numbers are 1, 2, 3, 5, 6, 8, 11, 12, ……, and so on
 # Brute Force 
 def brute(arr, k):
     n = len(arr)
-    maxi = max(arr)
-    mini = min(arr)
-    
-    ans = None  # Default value
-    
-    if k < mini:
-        ans = solu(k, mini)
-    elif k > mini and k < maxi:
-        ans = solu(k, maxi)
-    
-    return ans 
-
-def solu(start, end):
-    store = []
-    for i in range(start, end):
-        store.append(i)
-    return [store]
+    for i in range (n):
+        if arr[i] <= k :
+            k += 1 
+        else :
+            break
+    return k
 
 # Test Run 
-print(brute([4,7,9,10],4))
+# print(brute([4,7,9,10],1))
+
+# Optimal Approach 
+def optimal (arr,k):
+    n = len(arr)
+    low = 0 
+    high = n-1 
+    
+    while(low <= high):
+        mid = (low + high) //2 
+        miss = arr[mid] - (mid+1)
+        
+        if (miss <k ):
+            low = mid +1 
+        else:
+            high = mid - 1 
+    return (high+ 1 + k)
+
+# Test Run 
+print(optimal([4,7,9,10],5))

@@ -62,6 +62,7 @@ def findCap(arr,cap):
 
 
 # Optimal Approach 
+
 def optimal (weights,d):
     low = max(weights)
     high = sum(weights)
