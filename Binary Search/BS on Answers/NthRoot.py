@@ -61,7 +61,7 @@ def optimal (n,m):
             
             low = mid +1 
         else: 
-            high = mid -1 
+            high = mid -1    
     return -1 
 
 # Helper Function 
