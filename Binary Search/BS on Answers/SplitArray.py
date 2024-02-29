@@ -49,9 +49,7 @@ def summation(arr,pos):
 def optimal(arr,k):
     n = len(arr)
     
-    # Edge Case 
-    if k > n :
-        return -1 
+    
     
     low = max(arr)
     high = sum(arr)
