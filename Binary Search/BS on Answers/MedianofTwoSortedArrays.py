@@ -150,9 +150,11 @@ def optimal(a,b):
             
         
         # This is for checking the partion is correct
+        
         if l1 <= r2  and l2 <= r1 :
             if l % 2 == 1 :
                 return float(max(l1,l2))
+            
             # Need to Remove the float for leetcode 
             else :
                 return (float(max(l1,l2)) + float(min(r1,r2))) / 2.0

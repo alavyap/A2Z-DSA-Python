@@ -28,8 +28,7 @@ def longestsubArray(arr,k):
 
 
 
-# Optimal Approach  >This is a sliding window problem but the platforms would not accept is so doing just as arrays
-
+# Optimal Approach  > This is pointer solution for elements those are positive and zero 
 def longestSubarray(arr,k):
     n = len(arr)
     right,left = 0,0
