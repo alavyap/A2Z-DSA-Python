@@ -16,8 +16,6 @@ Explanation: In this example, there is only 1 peak that is at index 7.
 
 '''
 # Brute Force 
-from tkinter import W
-
 
 def brute (arr):
     n = len(arr)
