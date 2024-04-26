@@ -31,10 +31,51 @@ Since -42 is in the range [-231, 231 - 1], the final result is -42.
 
 # Brute Force 
 def atoi (s):
+    # This will remove the white spaces from the left side 
     s = s.lstrip()
-    res = " "
-    for i in range (len(s)):
-        if s[i] == "-" :
-           res += s[i]
-           continue
-        elif s[i] 
+    
+    # If nothing is there in the string 
+    if not s :
+        return 0 
+    
+    i = 0 
+    
+    # This will look for positive or negative 
+    sign = 1 
+    
+    # Checking if the number is positve or negative 
+    if s[i] == "+":
+        i += 1 
+    elif s[i] == "-":
+        i +=1 
+        sign = -1 
+        
+    # This will store the output  
+    result = 0 
+    
+    # Iterating over the string to get the numbers 
+    while (i <len(s)):
+        cur = s[i] 
+        
+        if not cur.isdigit() :
+            break 
+        else :
+            result = result * 10 + int(cur)
+        i += 1 
+        
+    
+    # Adding the sign with result  
+    result *= sign
+        
+    # Checking if the result in between (-2 **31 to 2 ** 31 -1)
+    if result > (2 ** 31) -1 :
+        return (2 ** 31) -1 
+    elif result <= (-2 **31) :
+        return (-2 ** 31)
+    else :
+        return result 
+    
+    
+    
+# Test Run 
+print (atoi("dfdsfsdf42 "))
