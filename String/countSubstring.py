@@ -10,6 +10,13 @@ For example:
 We can see that the substrings {ab, bc, ca, ad} are the only substrings with 2 distinct characters. 
 Therefore, the answer will be 4.    
 '''
+
+# Better Approach 
+# T: O(N *2)
+# S: O(N *3)
+from collections import defaultdict
+from tkinter import W
+
 def countCharacter(s, k):
     ans = []
     res = ""
@@ -27,4 +34,44 @@ def countCharacter(s, k):
 
 
 # Test Run 
-print(countCharacter("aacfssa",3))
+# print(countCharacter("aacfssa",3))
+
+
+# Optimal Code 
+def countDis(s,k):
+    ans = helper(s,k) - helper(s,k-1)
+    
+    return ans 
+
+def helper(s,k):
+    i = 0 
+    j = 0 
+    
+    curCount = 0 
+    result = 0 
+    
+    count = [0] *26 
+
+    while j < len(s):
+        index = ord(s[j]) -ord("a") 
+        
+        count[index] += 1 
+        
+        if count[index] ==1 :
+            curCount += 1 
+        
+        while curCount > k :
+            count[ord(s[i]) - ord("a")] -= 1 
+
+            if count[ord(s[i]) - ord("a")] == 0 :
+                curCount -= 1 
+            i += 1
+     
+        result += (j -i +1)
+        j += 1 
+    return result
+    
+    
+        
+# Test Run 
+print(countDis("aacfssa",3))
