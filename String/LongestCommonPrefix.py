@@ -10,7 +10,7 @@ Explanation: "fl is only  common prefix among the input strings.
 '''
 
 # Better Approach 
-def longestPrefix(str):
+def longestPrefixs(str):
     prefix = ""
     
     for i in str:

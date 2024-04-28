@@ -29,7 +29,7 @@ The parsed integer is -42.
 Since -42 is in the range [-231, 231 - 1], the final result is -42.
 '''
 
-# Brute Force 
+
 def atoi (s):
     # This will remove the white spaces from the left side 
     s = s.lstrip()
