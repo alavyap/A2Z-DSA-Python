@@ -42,7 +42,7 @@ def sumBeauty(s):
     freq = [0] * 26
     
     for right in range (len(s)):
-        indx = ord(s[right] - ord("a"))
+        indx = ord(s[right]) - ord("a")
         
         freq[indx] + 1 
         
@@ -71,5 +71,19 @@ def sumBeauty(s):
 
 print(beautySum("aabcb"))
 
+
+# T:O(N^2)
+
+def sumWithB(s):
+    ans = 0 
+    for i in range (len(s)):
+        freq = [0] * 26
+        
+        for j in range (i,len(s)):
+            freq[ord(s[j])  - 97] += 1
+            ans += max(freq) - min(x for x in freq if x != 0)
+    return ans 
     
-    
+# Test Run 
+
+print(sumWithB("aabcb"))
