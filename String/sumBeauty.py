@@ -34,44 +34,6 @@ def beautySum(s):
 # Test Run 
 # print(beautySum("aabcb"))
 
-# Optimal Code 
-
-def sumBeauty(s):
-    ans = 0 
-    left = 0
-    freq = [0] * 26
-    
-    for right in range (len(s)):
-        indx = ord(s[right]) - ord("a")
-        
-        freq[indx] + 1 
-        
-        maxF = max(x for x in freq if x != 0 )
-        
-        minF = min(x for x in freq if x != 0 )
-        
-        
-        beauty = maxF - minF 
-        
-        while beauty == 0 :
-            
-            freq[ord(s[left]) - ord("a")]  -= 1
-            left += 1 
-            
-            maxF = max(x for x in freq if x != 0 )
-            minF = min((x for x in freq if x != 0 ),default=0)
-            
-            beauty = maxF - minF
-            
-        ans += beauty 
-        
-    return ans 
-
-# Test Run 
-
-print(beautySum("aabcb"))
-
-
 # T:O(N^2)
 
 def sumWithB(s):
