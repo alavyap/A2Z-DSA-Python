@@ -21,15 +21,15 @@ def constructLL(arr):
         return None 
     
     head = Node(arr[0])
-    temp = head
+    tail = head
     
     for i in range (1,len(arr)):
         newNode = Node(arr[i])
-        temp.next = newNode
-        temp = newNode
+        tail.next = newNode
+        tail = newNode
         
     return head
 # Test Run 
-
+ 
 print(constructLL([4,2,3,5,1]))
 # constructLL([4,2,3,5,1])

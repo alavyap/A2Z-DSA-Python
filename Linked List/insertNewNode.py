@@ -12,3 +12,15 @@ Input: ‘N’ = 4, ‘newValue’ = 0
 Output: 0 4 2 5 1
 Explanation: Linked List after inserting the newValue is 0 -> 4 -> 2 -> 5 -> 1.
 '''
+
+class Node:
+    def __init__(self,value):
+        self.value = value 
+        self.data = None 
+        
+
+def insertAtFirst(list: Node, newValue: int) -> Node:
+    # Write your code here
+    temp = Node(newValue)
+    temp.next = list  
+    return temp
