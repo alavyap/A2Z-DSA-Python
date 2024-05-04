@@ -19,8 +19,75 @@ class Node:
         self.data = None 
         
 
+# Coding Ninja Solution
 def insertAtFirst(list: Node, newValue: int) -> Node:
     # Write your code here
     temp = Node(newValue)
     temp.next = list  
     return temp
+
+# Insertion form the last 
+def insertionAtLast(list,newValue):
+    # Edge Case 
+    if list is None :
+        return  Node(newValue)
+    temp = list 
+    
+    while (temp.next != None):
+        temp = temp.next  
+        
+    newNode = Node(newValue)
+    temp.next = newNode
+    return list
+
+'''
+Inserting at a given Kth element/poistion
+ K will be ranging between (1 to N +1) 
+ N is the length of the linked list 
+'''
+
+def insertionAtK (list,newValue,k):
+    if list is None :
+        if (k == 1 ):
+            return Node(newValue)
+        else:
+            return list 
+        
+    if (k == 1):
+        return Node(newValue,list) 
+    
+    count = 0 
+    temp = list 
+    while (temp != None):
+        count += 1 
+        if (count == k):
+            x = Node(newValue,temp.next)
+            temp.next = x 
+            break
+        
+        temp = temp.next  
+    return list
+
+
+# Inserting a Value in the linked list
+
+
+def insertionAtPosition (list,newValue,val):
+    if list is None :
+        return None
+        
+    if (list.data == val):
+        return Node(newValue,list) 
+    
+    
+    temp = list 
+    while (temp.next != None):
+        
+        if (temp.next.data == val):
+            x = Node(newValue)
+            x.next = temp.next
+            temp.next = x 
+            break
+        
+        temp = temp.next  
+    return list

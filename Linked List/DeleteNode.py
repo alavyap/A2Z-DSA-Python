@@ -24,7 +24,7 @@ Explanation: You are given the second node with value 5, the linked list should 
 
 '''
 
-# Coding Ninja
+# Coding Ninja > If the node is not given 
 
 class Node :
     def __init__(self,value) :
@@ -33,7 +33,8 @@ class Node :
         
         
 def deleteLast (list):
-    
+    if list == None or list.next == None :
+        return None
     temp = list 
     
     while (temp.next.next != None):
@@ -42,3 +43,122 @@ def deleteLast (list):
     temp.next = None 
     
     return list
+
+# If the node is given  to delete
+def deleteNode (list,k):
+    
+    # Base Case 
+    if list is  None:
+        return list
+    
+    # If K == 1 , i.e the first node of the linked list 
+    if (k == 1) :
+        list = list.next 
+        return list
+    
+    temp = list 
+    count = 0
+    prev = None
+        
+    while (temp != None):
+        count += 1 
+            
+        if (count == k) :
+            prev.next = prev.next.next 
+               
+            break 
+            
+        prev = temp 
+        temp = temp.next  
+    return list
+
+
+# If a value is given to delete 
+def deletValue (list,el):
+    if list is None :
+        return None 
+    if (list.value == el) :
+        temp = list 
+        return list 
+    
+    temp = list 
+    prev = None
+    
+    while (temp != None):
+        if temp.value == el :
+                
+            prev.next = prev.next.next 
+            break 
+        
+        prev = temp
+        temp = temp.next 
+    return list    
+
+
+
+# LeetCode  Solution 
+# Definition for singly-linked list.
+# class ListNode:
+#     def __init__(self, x):
+#         self.val = x
+#         self.next = None
+
+class Solution:
+    def deleteNode(self, node):
+        """
+        :type node: ListNode
+        :rtype: void Do not return anything, modify node in-place instead.
+        """
+        node.val = node.next.val
+        node.next = node.next.next
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+def display_linked_list(head):
+    current = head
+    while current:
+        print(current.value, end=" -> ")
+        current = current.next
+    print("None")
+
+# Example usage:
+# Create a linked list
+head = Node(1)
+head.next = Node(2)
+head.next.next = Node(3)
+head.next.next.next = Node(4)
+head.next.next.next.next = Node(5)
+
+# Display the original linked list
+print("Original Linked List:")
+display_linked_list(head)
+
+# Delete the node at position k (in this case, let's say k=3)
+k = 3
+head = deleteNode(head, k)
+
+# Display the linked list after deletion
+print("\nLinked List after deleting node at position", k, ":")
+display_linked_list(head)
