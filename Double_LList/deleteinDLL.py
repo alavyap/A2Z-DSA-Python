@@ -34,7 +34,7 @@ def deleteAtTail(head):
     
     return head
     
-# Striver Code code 
+# Striver Code 
 def deleteatTail(head):
     if head is None or head.next is None :
         return None 
@@ -50,3 +50,78 @@ def deleteatTail(head):
     
     del(temp)
     return head
+
+# Deletion on the Head 
+def deleteHead(head):
+    if head is None  or head.next is None :
+        return None 
+    
+    temp = head 
+    
+    head = head.next 
+    
+    head.prev = None
+    temp.next = None
+    
+    return head 
+
+
+# Delete at Kth Position
+def deleteatK(head,k):
+    if head is None  :
+        return head
+    if k == 1 :
+        head = head.next
+        head.next.prev = None 
+        return head
+    
+    
+    temp = head 
+    
+    count = 0
+  
+    while temp is not None :
+        count += 1 
+        temp = temp.next 
+        
+        if (count == k): 
+            break
+        
+    back = temp.prev
+    front = temp.next
+    
+    if (back == None and front == None):
+        del(temp)
+        return None
+    
+    elif (back == None):
+        return deleteHead(head)
+         
+        
+    elif (front == None):
+        return deleteatTail(head)
+         
+    
+    else :
+        back.next = front 
+        front.prev = back 
+        temp.next = None 
+        temp.prev = None 
+        return head 
+    
+    
+    
+    
+# Delete A given Node 
+def deleteNode(head,el):
+    
+    if head is None or head.next is None:
+        return None
+    
+    temp = head 
+    
+    while (temp != None):
+        temp = temp.next 
+        
+        if temp.value == el :
+            
