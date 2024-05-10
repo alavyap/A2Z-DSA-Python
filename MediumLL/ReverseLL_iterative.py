@@ -1,5 +1,6 @@
 '''
 LeetCode :> https://leetcode.com/problems/reverse-linked-list/
+Coding Ninja :> https://www.naukri.com/code360/problems/reverse-the-singly-linked-list_799897?interviewProblemRedirection=true&search=Linked%20List&leftPanelTabValue=PROBLEM
 Given the head of a singly linked list, reverse the list, and return the reversed list.
 Example :
 Input: head = [1,2,3,4,5]
