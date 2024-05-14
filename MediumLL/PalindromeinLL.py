@@ -40,12 +40,48 @@ def pali (head):
     
 
 
-# Optimal Approach 
+#Better Approach
+
 def isPali(head):
     
     # Edge Case 
     if head is None or head.next is None : 
-        return False 
+        return True 
+    
+    hari = head 
+    tori = head 
+    
+    while hari.next is not  None and hari.next.next is not  None :
+        tori = tori.next 
+        hari = hari.next.next 
+        
+    new_head = reverseRecursion(tori.next)
+    
+    first = head 
+    second = new_head
+    
+    while second is not None :
+        if first.data != second.data: 
+            reverseRecursion(new_head)
+            
+            return False
+        
+        first = first.next 
+        second = second.next 
+    reverseRecursion(new_head)
+    return True
+
+def reverseRecursion(head):
+    if head is None or head.next is None :
+        return head 
+    
+    new_head = reverseRecursion(head.next)
+    
+    front = head.next 
+    front.next = head 
+    head.next = None  
+    
+    return new_head
     
     
 '''
@@ -53,3 +89,35 @@ Every Linked List Problem, if you can't do it in LinkedList format,
 copy the data in list and now your question would become for an 
 array, solve it.
 '''
+
+# Optimal Approach
+
+def isPalindrome(head):
+    if not head or not head.next :
+        return True 
+    
+    slow = head 
+    fast = head 
+    reversed_list = None 
+    
+    while fast is not None and fast.next is not None :
+        tmp = slow 
+        
+        slow = slow.next 
+        fast = fast.next.next 
+        
+        
+        tmp.next = reversed_list 
+        reversed_list = tmp 
+        
+        
+    if fast is not None :
+        slow = slow.next 
+            
+    while reversed_list is not None and reversed_list.val == slow.val :
+        reversed_list = reversed_list.next 
+        slow = slow.next 
+    return reversed_list is None 
+
+# T: O(N)
+# S : O(1)

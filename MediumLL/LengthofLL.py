@@ -12,7 +12,7 @@ def countNodes (head):
     
     tori = head 
     hari = head 
-    
+    # count = 0 
     while hari and hari.next :
         
         tori = tori.next 
