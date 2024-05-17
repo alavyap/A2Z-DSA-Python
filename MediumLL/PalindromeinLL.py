@@ -90,7 +90,7 @@ copy the data in list and now your question would become for an
 array, solve it.
 '''
 
-# Optimal Approach
+# Optimal Approach : two Pointer Technique
 
 def isPalindrome(head):
     if not head or not head.next :

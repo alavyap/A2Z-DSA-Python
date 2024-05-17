@@ -12,7 +12,7 @@ Input: head = [1,2,3,4,5]
 Output: [1,3,5,2,4]
 
 '''
-# Brute Force 
+# LeetCode Solution  
 
 def oddEven(head):
     
@@ -25,10 +25,48 @@ def oddEven(head):
     even = head.next 
     headEven = even 
     
-    while (even and odd and even.head and odd.next):
+    while (even and odd and even.next and odd.next):
         odd.next = even.next 
         odd = odd.next 
         even.next = odd.next 
-        even = headEven 
+        even = even.next 
     odd.next = headEven 
     return head 
+
+
+# Coding Ninja 
+def EvenOdd(head):
+    
+    # We make 5 pointers 
+    curr = head 
+    even_head = None 
+    even_tail = None 
+    odd_head = None 
+    odd_tail = None 
+    
+    while (curr != None):
+        if curr.data%2 == 0 :
+            if even_head is None :
+                
+                even_head = curr 
+                even_tail = curr 
+                
+            else: 
+                even_tail.next = curr 
+                even_tail = curr 
+                
+        else: 
+            if odd_head is None :
+                odd_head = curr 
+                odd_tail = curr 
+            else: 
+                odd_tail.next = curr 
+                odd_tail = curr 
+                
+        curr = curr.next 
+        
+    if even_head and odd_head :
+        even_tail.next = odd_head 
+        odd_tail.next = None 
+        
+    return even_head if even_head else odd_head
