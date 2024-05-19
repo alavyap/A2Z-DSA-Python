@@ -30,7 +30,7 @@ def findMid(head):
         temp = temp.next 
         
         
-    sMid = (count // 2 ) + 1
+    mid = (count // 2 ) + 1
     
     temp = head
     

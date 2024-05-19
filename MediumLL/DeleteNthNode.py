@@ -46,23 +46,43 @@ def delNth(head,n):
 
 def deleN(head,n):
     
-    # if head is None :
-    #     return None 
     
     hari = head 
     tori = head 
-    
+        
     for i in range (n):
-        hari = hari.next 
-        
+        hari = hari.next
+            
     while hari is None :
+        # if not  hari  :
         return head.next
-    
-    while hari.next is not None :
-        hari = hari.next 
-        tori = tori.next 
         
-    delNo = tori.next 
+    while hari.next is not None  :
+        tori = tori.next 
+        hari = hari.next 
+            
     tori.next = tori.next.next 
-    delNo = None 
     return head
+
+
+# Coding Ninja 
+def deleteNth(head,pos):
+    if head is None or pos <0 :
+        return head 
+    
+    if pos == 0 :
+        return head.next 
+    
+    temp = head 
+    
+    for i in range (pos -1):
+        if temp.next is None :
+            return head 
+        temp = temp.next 
+        
+    if temp.next is None :
+        return head 
+    
+    temp.next = temp.next.next 
+    return head 
+            
