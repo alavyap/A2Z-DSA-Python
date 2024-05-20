@@ -35,3 +35,22 @@ def midDelete(head):
     if prev  is not None:
         prev.next = temp.next
     return head 
+
+# Optimal Approach 
+def deleteMiddle(head):
+    
+    # Edge Case 
+    if head is None or head.next is None:
+        return head 
+    
+    hari = tori = head 
+    prev = None 
+    
+    while hari and hari.next :
+        prev = tori 
+        tori = tori.next 
+        hari = hari.next.next 
+        
+    if prev is not None :
+        prev.next = tori.next 
+    return head 
