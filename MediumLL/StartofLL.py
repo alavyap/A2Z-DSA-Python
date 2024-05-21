@@ -40,8 +40,8 @@ def detectCycle (head):
     tor = head
     
     while tor and hare and hare.next :
-        hare = hare.next.next 
         tor = tor.next 
+        hare = hare.next.next 
         
         
         if hare == tor :

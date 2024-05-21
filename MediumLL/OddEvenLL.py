@@ -1,6 +1,6 @@
 '''
-Coding Ninja :> 
-LeetCode :> 
+Coding Ninja :> https://www.naukri.com/code360/problems/segregate-even-and-odd-nodes-in-a-linked-list_1116100?interviewProblemRedirection=true&search=Odd&attempt_status=COMPLETED&leftPanelTabValue=PROBLEM
+LeetCode :> https://leetcode.com/problems/odd-even-linked-list/description/
 Problem Statement
 Given the head of a singly linked list, group all the nodes with odd indices together followed by the nodes with even indices, and return the reordered list.
 The first node is considered odd, and the second node is even, and so on.
