@@ -12,7 +12,10 @@ Output: [1,2,3,4]
 
 # Brute Force / NeetCode  
 # Time and Space Complexity is O(NlogN) and O(N)
-from turtle import right
+
+class ListNode:
+    def __init__ (self,val):
+        self.val = val
 
 
 def sortLi(self,head):
