@@ -11,8 +11,7 @@ The sorted list for the given linked list will be 0 -> 1 -> 1 -> 2 -> 2.
 
 '''
 
-# Optimal Approach 
-
+# Better Approach 
 def sorti(head):
     
     if head is None or head.next is None: 
@@ -41,6 +40,8 @@ class Node:
         self.val = x
         self.next = None
 
+
+# Optimal Approach
 def sortWithoutSpace(head):
     
     if head is None or head.next is None :
