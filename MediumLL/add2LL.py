@@ -12,3 +12,56 @@ Explanation: 342 + 465 = 807.
 
 '''
 # Brute Force 
+from MediumLL.SortLL import ListNode
+
+
+def addTwoNumbers(l1,l2):
+    
+    # Edge Case 
+    if not l1 or not l2 :
+        return None
+    
+    head = ListNode()
+    temp = head 
+    carry = 0 
+    
+    while (l1 is not None or l2 is not None) or carry :
+        sum = 0 
+        
+        if l1 is not None :
+            sum += l1.val
+            l1 = l1.next 
+        if l2 is not None :
+            sum += l2.val
+            l2 = l2.next 
+        sum += carry 
+        carry = sum // 10 
+        new_node = ListNode(sum % 10 )
+        temp.next = new_node 
+        temp = temp.next 
+    return head.next 
+
+
+def add_by_neetcode (l1,l2):
+    
+    head = ListNode()
+    temp = head 
+    carry = 0 
+    
+    while l1 or l2 or carry :
+        
+        val1 = l1.val if l1 else 0 
+        val2 = l2.val if l2 else 0 
+        
+        # New Digit 
+        val = val1 + val2 + carry 
+        
+        carry = val // 10 
+        val = val % 10 
+        temp.next = ListNode(val)
+        
+        #  Update Pontiers 
+        temp = temp.next 
+        l1 = l1.next if l1 else None 
+        l2 = l2.next if l2 else None 
+    return temp.next
