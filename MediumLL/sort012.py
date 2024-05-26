@@ -48,9 +48,9 @@ def sortWithoutSpace(head):
         return head 
     
     # Dummy Nodes for lists of 0s,1s,2s
-    zeroD = Node(0)
-    oneD = Node(0)
-    twoD = Node(0)
+    zeroD = Node(-1)
+    oneD = Node(-1)
+    twoD = Node(-1)
     
     # Current Pointer for 3 lists 
     zero = zeroD 

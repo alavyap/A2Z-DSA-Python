@@ -13,6 +13,9 @@ Output: [1,2,3,4]
 # Brute Force / NeetCode  
 # Time and Space Complexity is O(NlogN) and O(N)
 
+from re import L
+
+
 class ListNode:
     def __init__ (self,val):
         self.val = val
@@ -144,4 +147,49 @@ def sortList(head):
                 
             
             
+# Striver 
+def sortingLL(head):
+    if head is None or head.next is None :
+        return head 
     
+    midd = findMiddle(head)
+    left = head 
+    right = midd.next 
+    midd.next = None 
+    
+    left = sortingLL(left)
+    right = sortingLL(right)
+    
+    return merger_TS(left,right)
+    
+
+def findMiddle(self,head):
+    if head is None or head.next is None : 
+        return head 
+    
+    slow = head 
+    fast = head.next 
+    
+    while fast is not None and fast.next is not None :
+        slow = slow.next 
+        fast = fast.next.next 
+    return slow
+
+def merger_TS(self,list1, list2):
+    dummy = ListNode(-1)
+    temp  = dummy 
+    
+    while list1  and list2  :
+        if list1.val < list2.val :
+            temp.next = list1 
+            list1 = list1.next 
+        else :
+            temp.next = list2 
+            temp = list2 
+        temp = temp.next 
+    if list1 :
+        temp.next = list1 
+    else:
+        temp.next = list2
+        
+    return dummy.next

@@ -12,8 +12,6 @@ Explanation: 342 + 465 = 807.
 
 '''
 # Brute Force 
-from MediumLL.SortLL import ListNode
-
 
 def addTwoNumbers(l1,l2):
     

@@ -62,8 +62,7 @@ def reversing(head):
 
 # Time : O(3N) and Space : O(1)
 
-
-# Optimal Approach
+# Better Approach
 
 def opAdd(head):
     carry = helper(head)
