@@ -67,61 +67,58 @@ def deleteHead(head):
 
 
 # Delete at Kth Position
-def deleteatK(head,k):
-    if head is None  :
-        return head
-    if k == 1 :
-        head = head.next
-        head.next.prev = None 
-        return head
-    
-    
-    temp = head 
-    
-    count = 0
-  
-    while temp is not None :
-        count += 1 
-        temp = temp.next 
-        
-        if (count == k): 
-            break
-        
-    back = temp.prev
-    front = temp.next
-    
-    if (back == None and front == None):
-        del(temp)
-        return None
-    
-    elif (back == None):
-        return deleteHead(head)
-         
-        
-    elif (front == None):
-        return deleteatTail(head)
-         
-    
-    else :
-        back.next = front 
-        front.prev = back 
-        temp.next = None 
-        temp.prev = None 
-        return head 
-    
+def deleteNode(self,head, position):
+    # Code here
+    if head is None or position <= 0:
+        return
+
+    current = head
+    count = 1
+
+    # Traverse to the node at the given position
+    while current and count < position:
+        current = current.next
+        count += 1
+
+    # If position is greater than the number of nodes
+    if current is None:
+        return
+
+    # If the node to be deleted is the head node
+    if current == head:
+        head = current.next
+        if head:
+            head.prev = None
+        return
+
+    # If the node to be deleted is not the last node
+    if current.next:
+        current.next.prev = current.prev
+
+    # If the node to be deleted is not the first node
+    if current.prev:
+        current.prev.next = current.next
+
+    current = None
     
     
     
 # Delete A given Node 
-def deleteNode(head,el):
+# Node can't be head
+
+def deleteNode(el):
     
-    if head is None or head.next is None:
-        return None
+    back = el.prev
+    front = el.next 
+   
+    if front == None :
+       back.next = None 
+       el.prev = None 
+       return 
     
-    temp = head 
+    back.next = front 
+    front.prev = back 
     
-    while (temp != None):
-        temp = temp.next 
-        
-        if temp.value == el :
-            
+    el.next = None 
+    el.prev = None 
+   

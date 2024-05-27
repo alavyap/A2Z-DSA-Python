@@ -22,7 +22,7 @@ class Node:
         self.prev = None
         
         
-#  Insertion on the Last Node   
+#  Insertion on the Last Node 
 def insertAtTail(head,k):
     
     if head is None :
@@ -36,5 +36,51 @@ def insertAtTail(head,k):
     newNode = Node(k)
     temp.next = newNode
     newNode.prev = temp
+    newNode.next = None
     return head
          
+# Insertion At the Head 
+def insertAtHead(head,k):
+    if head is None :
+        return Node(k)
+    
+    temp = Node(k)
+    
+    head.prev = temp 
+    temp.next = head 
+    temp.prev = None
+    return temp
+
+# Insert at the K th position 
+def insertatK (head,p,data):
+    new_node = Node(data)
+    current = head
+    count = 0
+
+    # Traverse to the p-th node (0-based index)
+    while current and count < p:
+        current = current.next
+        count += 1
+        
+        # If p is greater than the length of the list, raise an error
+    if not current:
+        raise IndexError("Position p is out of the list's bounds.")
+
+    # Insert the new node after the p-th node
+    new_node.next = current.next
+    new_node.prev = current
+    if current.next:
+        current.next.prev = new_node
+    current.next = new_node
+
+
+
+
+# Inserting Before the node 
+# Can't be at Head 
+def insertAtNode(node,val):
+    back = node.back 
+    newNode = Node(val)
+    
+    back.next = newNode
+    node.prev = newNode

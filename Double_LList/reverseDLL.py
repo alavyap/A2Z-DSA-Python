@@ -23,7 +23,7 @@ class Node :
         
 def reverseDLL(head):
     if head is None or head.next is None:
-        return None 
+        return head 
     
     temp = head 
     prev = None
