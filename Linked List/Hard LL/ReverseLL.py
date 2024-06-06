@@ -65,3 +65,30 @@ def reverse_LinkedList(head):
         temp = front
     return prev
             
+            
+# Optimal Approach 
+def reverseKthGroup(head,k):
+    count = 0 
+    temp = head 
+    
+    while temp :
+        temp = temp.next 
+        count += 1 
+        
+    n = count // k  
+    # To find the total number of groups to rotate 
+    
+    prev = dummy = ListNode()
+    dummy.next = head 
+    while n :
+        curr = prev.next 
+        next_node = curr.next 
+        for i in range (1,k):
+            curr.next = next_node.next
+            next_node.next = prev.next 
+            prev.next = next_node
+            next_node = curr.next 
+        prev = curr 
+        n -= 1 
+    return dummy.next
+        
