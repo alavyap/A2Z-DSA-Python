@@ -29,12 +29,72 @@ node in a single level.
 # Brute Force 
 def flatten(head): 
     arr = [] 
-    while head :
+    tempo = head
+    while tempo :
         temp = head 
         while temp :
             arr.append(temp.data)
             temp = temp.child
-        head = head.next 
+        tempo = tempo.next 
         
-    arr.sort() 
-    return arr   
+    # arr.sort() 
+    return new_LL(arr)
+
+def new_LL(arr):
+    if not arr: 
+        return None 
+    
+    head = Node(arr[0])
+    tail = head
+    
+    for i in range (1,len(arr)):
+        newNode = Node(arr[i])
+        tail.child = newNode
+        tail = newNode
+        
+    return head
+# Time Complexity O(N*M) *2 + O(X logX) , where X = N*M & Space Complexity is O(N*M)*2
+
+
+
+# Optimal Approach 
+
+
+def flatLL(head):
+    if head is None or head.next is None :
+        return head 
+    
+    head_2 = flatLL(head.next)
+    
+    single_LL = merger(head,head_2)
+    
+    
+    return single_LL
+
+def merger(l1,l2):
+    dummy = Node(-1)
+    temp = dummy 
+    
+    while l1 and l2 :
+        if l1.data < l2.data:
+            temp.child = l1
+            temp = l1
+            l1 =l1.child 
+        else :
+            temp.child = l2 
+            temp = l2 
+            l2 = l2.child 
+            
+        temp.next = None 
+        
+        if l1 :
+            temp.child = l1 
+        else:
+            temp.child = l2 
+            
+    if dummy.child :
+        dummy.child.next = None 
+        
+    return dummy.child 
+
+# Time : O(2*N*M) & Space : O(N) for recursive function 
