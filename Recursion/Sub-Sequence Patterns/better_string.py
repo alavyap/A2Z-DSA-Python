@@ -20,24 +20,33 @@ Expected Auxiliary Space: O( N )
 
 
 # Brute Force 
-def if_better (s1,s2):
-    c1 = {}
-    c2 = {} 
+def if_better (str1,str2):
     
-    def count_letter (s,count_dict):
-        for char in s :
-            if char in count_dict :
-                count_dict[char] += 1
-            else :
-                count_dict[char] = 1 
-                
-    count_letter(s1,c1)
-    count_letter(s2,c2)
+    c1 = count_subsequence(str1)
+    c2 = count_subsequence(str2)
+    
+    if c1 > c2 :
+        return str1 
+    elif c1 < c2 :
+        return str2
+    else :
+        return str1 
     
     
-    for keys in c1 :
-        for keys in c2 :
-            if c1[keys] == c2[keys] :
-                return s1 
+def count_subsequence (str):
+    n = len(str)
+    MOD = 10 ** 9 + 7
+    
+    dp = [0] * (n +1)
+    dp[0] = 1 
+    last_occurences = {}
+    
+    for [i] in range (1, n+1):
+        dp[i] = (2 * dp[i-1]) % MOD
         
-    
+        if str[i-1] in last_occurences :
+            dp[i] = (dp[i] - dp[last_occurences[str[i-1]] - 1 ]) % MOD 
+        
+        last_occurences[str[i-1]] = i 
+        
+    return  dp[n]    
