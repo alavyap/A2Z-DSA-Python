@@ -31,6 +31,7 @@ def generateParenthesis(self, n):
 
 
 # Optimal Approach 
+
 def parenthesis(n):
     
     def recursive(s,left,right):
@@ -49,5 +50,5 @@ def parenthesis(n):
     recursive('',0,0)
     return ans
 
-# Time Complexity :. O(4^n) and Space :. O(N)
+# Time Complexity :. O(2^n) and Space :. O(N)
 

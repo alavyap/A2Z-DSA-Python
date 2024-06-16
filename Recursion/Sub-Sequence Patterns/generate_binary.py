@@ -42,7 +42,7 @@ def generateBin(k,str,n):
         generateBin(k,str,n+1)
         
         
-# Time Complexity :.. O(2^K) ,where k is hte size of the binary string 
+# Time Complexity :.. O(2^K) ,where k is the size of the binary string 
 # Space Complexity :. O(K)
 
 '''
