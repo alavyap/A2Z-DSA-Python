@@ -17,28 +17,19 @@ Explanation:
 '''
 
 # Recursive Approach
-
-def perfect_Sum(arr,n,sum):
-    ans = {}
-    return count_sum(arr,n,sum,ans)
-
-
-def count_sum(arr,n,sum, ans):
-    MOD = 10 ** 9 + 7
-    if sum == 0 :
-        return 1 
-    if n == 0 :
-        return 0
+def perfectSum(arr, n, sum):
+		# code here
+		# Initialize a dynamic programing array with 0 based indexing 
     
-    if (n,sum) in  ans :
-        return ans[(n,sum)]
-    exclude = count_sum(arr,n-1,sum,ans)
-    include = 0 
-    if arr[n-1] <= sum :
-        include = count_sum(arr,n-1,sum - arr[n-1], sum)
+        dp = [1] +[0] * sum  #dp[i] represents the count of perfect sums that add up to 'i' 
         
-    ans[(n,sum)] = (exclude + include) % MOD
+        MOD = 10 ** 9 + 7
+       # Iterate through the possible sums in reverse order 
+        
+        for number in arr :    
+        
+            for needed_sum in range (sum, number - 1, -1):
+        
+                dp[needed_sum] = (dp[needed_sum] + dp[needed_sum-number]) % MOD 
     
-    return ans[(n,sum)]
-    
-    
+        return dp[sum]
