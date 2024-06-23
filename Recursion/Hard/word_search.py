@@ -27,3 +27,51 @@ board and word consists of only lowercase and uppercase English letters.
 
 Follow up: Could you use search pruning to make your solution faster with a larger board?
 '''
+
+# Time Complexity :. O(4 (N∗M))
+
+def exist(self,board, word):
+    row = len(board)
+    col = len(board[0])
+
+
+    # find the first letter in board of word 
+    for r in range (row):
+        for c in range (col):
+            if board[r][c] == word[0] :
+                if self.searchNext(board, word, 0, r, c, row, col):
+                    return True 
+    return False
+
+
+def searchNext(self,board, word, index, r, c, row, col):
+        
+    #  if the index reaches the end that means we have found the word
+    if index == len(word):
+        return True
+    
+    # checking the boundaries if the character at which we are placed is not the required letter
+    if r < 0 or c < 0 or r >= row or c >= col or board[r][c] != word[index] or board[r][c] == '!':
+        return False
+    
+    # this is to prevent the reusing of the same character
+    current_letter = board[r][c] 
+    board[r][c] = '!'
+    
+    # Finding the next letter in all 4 directions in the matrix
+    # top of the current position
+    top = self.searchNext(board, word, index + 1, r - 1, c, row, col)
+    
+    # bottom of the current position
+    bottom = self.searchNext(board, word, index + 1, r + 1, c, row, col)
+
+    # right of the current position
+    right = self.searchNext(board, word, index + 1, r, c + 1, row, col)
+
+    # left of the current position
+    left = self.searchNext(board, word, index + 1, r, c - 1, row, col)
+    
+    board[r][c] = current_letter  #reverting the changes 
+    
+    return top or bottom or left or right
+
