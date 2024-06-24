@@ -75,3 +75,41 @@ def searchNext(self,board, word, index, r, c, row, col):
     
     return top or bottom or left or right
 
+
+# 
+# Follow up: Could you use search pruning to make your solution faster with a larger board?
+def existing(self, board, word) -> bool:
+    row = len(board)
+    col = len(board[0])
+        
+        # Frequency check
+    board_counter = Counter(char for row in board for char in row)
+    word_counter = Counter(word)
+        
+    for char in word_counter:
+        if word_counter[char] > board_counter[char]:
+            return False
+        
+    def backtrack(i, j, k):
+        if k == len(word):
+            return True
+        if i < 0 or i >= row or j < 0 or j >= col or board[i][j] != word[k]:
+            return False
+            
+        temp = board[i][j]
+        board[i][j] = ''
+            
+        found = (backtrack(i+1, j, k+1) or
+                backtrack(i-1, j, k+1) or
+                backtrack(i, j+1, k+1) or
+                backtrack(i, j-1, k+1))
+            
+        board[i][j] = temp
+        return found
+        
+    for r in range(row):
+        for c in range(col):
+            if board[r][c] == word[0]:
+                if backtrack(r, c, 0):
+                    return True
+    return False
