@@ -81,3 +81,38 @@ def isSafe(self,row,col,board,n):
     return True
          
     
+
+# Better Approach > using hashing 
+
+def main_NQueen(self,n):
+    ans = [] 
+    board = ["." * n for _ in range (n) ]
+    left_row = [0]*n
+    upper_diagonal = [0] * (2*n-1)
+    lower_diagonal = [0] * (2*n-1)
+    
+    self.H_solve(0,board,left_row,upper_diagonal,lower_diagonal,ans,n )
+    return ans 
+
+
+def H_solve(self,col,board,left_row,upper_diagonal,lower_diagonal,ans,n):
+    if col == n :
+        ans.append(board[:])
+        return 
+    
+    for row in range (n):
+        if left_row[row] == 0 and lower_diagonal[row+col] == 0 and upper_diagonal[n-1 + col-row] == 0 :
+            board[row] = board[row][:col] + "Q" + board[row][col+1:]
+            left_row[row] = 1 
+            lower_diagonal[row+col] = 1 
+            upper_diagonal[n-1 + col-row] = 1 
+            
+            self.H_solve(col+1 ,board  ,left_row  ,upper_diagonal,lower_diagonal , ans ,n)
+            
+            
+            board[row] = board[row][:col] +"."+ board[row][col+1:]
+            left_row[row] = 0 
+            lower_diagonal[row + col] = 0 
+            upper_diagonal[n - 1 + col - row] = 0 
+            
+            
