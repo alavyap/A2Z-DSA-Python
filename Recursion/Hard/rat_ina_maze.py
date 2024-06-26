@@ -40,3 +40,73 @@ Constraints:
 0 ≤ m[i][j] ≤ 1
 
 '''
+# Recursion , Backtracking  
+# Time :. O(4 ^(N*M)) ;; Space :. O(N*M)
+def path_find(m,n):
+    ans = []
+    board = [[0 for _ in range(n)] for _ in range (n)]
+    
+    if m[0][0] == 1 :
+        backtrack(0, 0, m, n, ans, "", board)
+        
+    return ans 
+
+def backtrack(self,i,j,a,n,ans,move,vis):
+    if i == n-1 and j == n-1 : 
+        ans.append(move)
+        return 
+    
+    
+    # Downward 
+    if i+1 < n and not vis[i+1][j] and a[i+1][j] == 1 :
+        vis[i][j] = 1 
+        self.backtrack(i+1,j,a,n,ans,move + "D",vis)
+        vis[i][j] = 0 
+        
+    # Left 
+    if j - 1 >= 0 and not vis[i][j-1] and a[i][j-1] == 1 :
+        vis[i][j] = 1
+        self.backtrack(i,j-1,a,n,ans,move + "L",vis)
+        vis[i][j] = 0
+        
+    # Right
+    if j + 1 < n and not vis[i][j+1] and a[i][j+1] == 1 :
+        vis[i][j] = 1
+        self.backtrack(i,j+1,a,n,ans,move + "R", vis)
+        vis[i][j] = 0 
+        
+    # Upward 
+    if i - 1 >= 0 and not vis[i-1][j] and a[i-1][j] == 1 :
+        vis[i][j] = 1
+        self.backtrack(i-1,j,a,n, ans, move + "U", vis )
+        vis[i][j] = 0
+
+
+# Optimal Approach
+
+def find_path(self,m,n):
+    ans = [] 
+    board = [[0 for _ in range (n)] for _ in range(n)]
+    
+    di = [+1,0,0,-1]
+    dj = [0,-1,1,0]
+    
+    if m[0][0] == 1 :
+        self.helper(0,0,m,n,ans,"",board,di,dj)
+    return ans 
+
+def helper(self,i,j,a,n,ans,move,vis,di,dj):
+    if i == n-1 and j == n-1 :
+        ans.append(move)
+        return 
+    
+    dire = "DLRU"
+    
+    for indx in range (4):
+        nexti = i +di[indx]
+        nextj = j + dj[indx]
+        
+        if nexti >= 0 and nextj >= 0 and nexti < n and nextj < n and not vis[nexti][nextj] and a[nexti][nextj] == 1 :
+            vis[i][j] = 1 
+            self.helper(nexti,nextj,a,n,ans,move+ dire[indx],vis,di,dj)
+            vis[i][j] = 0
