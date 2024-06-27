@@ -110,3 +110,4 @@ def helper(self,i,j,a,n,ans,move,vis,di,dj):
             vis[i][j] = 1 
             self.helper(nexti,nextj,a,n,ans,move+ dire[indx],vis,di,dj)
             vis[i][j] = 0
+
