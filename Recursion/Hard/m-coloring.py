@@ -34,9 +34,9 @@ Constraints:
 '''
 
 def graphColoring(graph, k, V):
-    color = [0] * k
+    color = [0] * V
     
-    if solve (0, color, k,V graph):
+    if solve (0, color, k,V,graph):
         return True
     return False
 
@@ -56,8 +56,8 @@ def solve (node,color,k,V,graph):
     return False
 
 
-def isSafe(node,color,graph,V,k):
-    for c in range (k):
-        if c != node and graph[c][node] == 1 and color[k] == color :
+def isSafe(node,color,graph,V,col):
+    for c in range (V):  
+        if c != node and graph[c][node] == 1 and color[c] == col :
             return False
     return True
