@@ -23,3 +23,38 @@ board[i].length == 9
 board[i][j] is a digit or '.'.
 It is guaranteed that the input board has only one solution.
 '''
+
+def solveSudoku(board):
+    n = {'1','2','3','4','5','6','7','8','9'}
+    row = len(board)
+    col = len(board[0])
+    
+    for i in range (row):
+        for j in range (col):
+            if board[i][j] =="." :
+                for input_option in n :
+                    if isValid(board,i,j,input_option):
+                        board[i][j] = input_option 
+                        if solveSudoku(board):
+                            return True
+                        else:
+                            board[i][j] = "."
+                            
+                return False
+    return True
+
+
+def isValid(board,row,col,input_option):
+    
+    for i in range (9):
+        if board[row][i] == input_option:
+            return False 
+        if board[i][col] == input_option :
+            return False 
+        sub_row = (3 *(row//3)+ i //3)
+        sub_col = (3 * (col // 3) + i %3) 
+        if board[sub_row][sub_col] == input_option :
+            return False 
+    return True
+    
+    
