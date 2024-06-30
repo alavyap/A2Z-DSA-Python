@@ -23,6 +23,10 @@ board[i].length == 9
 board[i][j] is a digit or '.'.
 It is guaranteed that the input board has only one solution.
 '''
+# O(9 ( N∗N))
+
+
+
 
 def solveSudoku(board):
     n = {'1','2','3','4','5','6','7','8','9'}
