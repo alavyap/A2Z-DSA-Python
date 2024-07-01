@@ -34,3 +34,38 @@ num consists of only digits.
 
 
 '''
+def addOperators(nums,target):
+    
+    L = len(nums)
+    ans = set()
+    
+    def backtrack(i,total,last,expr):
+       # This part of the code is checking if we have reached the end of the input string `nums`. If
+       # we have reached the end (`i == L`), it then checks if the `total` value calculated so far is
+       # equal to the target value. If it is, it adds the current expression `expr` to the set `ans`.
+       # This is essentially a base case for the recursive function, ensuring that we only add valid
+       # expressions that evaluate to the target value.
+        if i == L :
+            if total == target: 
+                ans.add(expr)
+            return 
+        
+        
+        for j in range (i,L):
+           # This part of the code is responsible for generating all possible combinations of
+           # expressions by inserting the operators '+', '-', and '*' between the digits of the input
+           # string `nums`. Here's a breakdown of what each step does:
+            n = int(nums[i:j+1])
+            
+            if i == 0 :
+                backtrack(j+1,n,n,str(n))
+            else : 
+                backtrack(j+1,total + n ,n, expr + "+" +str(n))
+                backtrack(j+1,total - n, -n , expr + "-" + str(n))
+                backtrack(j+1,total - last + last *n , last * n, expr + "*" + str(n))
+                
+                
+            if n == 0 :
+                break 
+    backtrack(0,0,0,"")
+    return list(ans)
