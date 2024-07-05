@@ -1,5 +1,6 @@
 '''
 GFG :> https://www.geeksforgeeks.org/problems/count-total-set-bits-1587115620/1
+Coding Ninja :> https://www.naukri.com/code360/problems/count-set-bits_1112627?interviewProblemRedirection=true&search=count&practice_topic%5B%5D=Bit%20Manipulation&leftPanelTabValue=PROBLEM
 
 You are given a number N. Find the total count of set bits for all numbers from 1 to N(both inclusive).
 
@@ -25,7 +26,85 @@ Your Task: The task is to complete the function countSetBits() that takes n as a
 Expected Time Complexity: O(log N).
 Expected Auxiliary Space: O(1).
 
-Constraints:
+Constraints:  
 1 ≤ N ≤ 108
 
+'''   
+
+# Brute Force 
+
+def countSet(n):
+    ans = []
+    count = 0
+    
+    for i in range (1,n+1):
+        helper(i,ans)
+    
+    for r in (ans):
+        for c in r :
+            if c == 1 :
+                count += 1 
+    return count
+
+def helper(num,ans):
+    single = [] 
+    
+    while num > 0 :
+        remainder = num % 2 
+        single.append(remainder)
+        num = num // 2 
+        
+    ans.append(single)
+    return ans 
+        
 '''
+Test Run 
+print(countSet(4))
+
+Better Approach
+'''
+
+def binary(n):
+    count = 0 
+    for i in range ( 1, n+1):
+        count += bin(i).count('1')
+    return count
+
+
+
+# print(binary(4))
+
+
+
+# For Just counting the set bit for the given number  >><< Optimal Appraoch 
+def justN (n):
+    count = 0 
+    while (n != 0 ):
+        n = n & (n-1)
+        count += 1 
+    return count
+
+# print(justN(13))
+
+
+
+
+# IF we have to find the set bits for 1 to N 
+
+def allBinary(n):
+    
+    n +=  1 
+    count = 0 
+    x = 2 
+    
+    while (x >> 1 ) < n :
+        quotient = n // x 
+        count += quotient * (x >> 1 )
+        remainder = n % x 
+        
+        if remainder > (x >> 1) :
+            count += remainder - (x >> 1)
+        x *= 2 
+    return count
+            
+print(allBinary(6))
