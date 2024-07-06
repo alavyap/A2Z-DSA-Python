@@ -1,6 +1,6 @@
 '''
 GFG :> https://www.geeksforgeeks.org/problems/count-total-set-bits-1587115620/1
-Coding Ninja :> https://www.naukri.com/code360/problems/count-set-bits_1112627?interviewProblemRedirection=true&search=count&practice_topic%5B%5D=Bit%20Manipulation&leftPanelTabValue=PROBLEM
+Coding Ninja :> https://www.naukri.com/code360/problems/count-set-bits_1112627?interviewProblemRedirection=true&search=count&practice_topic%5B%5D=Bit%20Manipulation&leftPanelTabValue=PROBLEMcout
 
 You are given a number N. Find the total count of set bits for all numbers from 1 to N(both inclusive).
 
