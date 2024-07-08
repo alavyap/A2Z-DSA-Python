@@ -27,6 +27,58 @@ Constraints:
 
 -231 <= dividend, divisor <= 231 - 1
 divisor != 0
-
-
 '''
+# Brute Force >> This will give TLE
+def no_div(dividend, divisor):
+    sum = 0 
+    count = 0 
+    while (sum + divisor <= dividend):
+        count =  count + 1 
+        sum += divisor
+    return count
+
+
+
+# Test Run 
+# print(no_div(22,3))
+
+
+# Optimal Appraoch
+
+def bit_manipulation(dividend, divisor):
+    
+    # Edge Case 
+    INT_MAX = 2 ** 31 -1
+    INT_MIN = -2 ** 31 
+    
+    # Special Case :
+    if divisor == 0 :
+        return INT_MAX if dividend >= 0 else INT_MIN 
+    if dividend == INT_MIN and divisor == -1 :
+        return INT_MAX
+    
+    # Determine sign of the quotient 
+    sign = (dividend < 0 ) ^ (divisor < 0 )
+    
+    # Take the absolute value of the inputs (to simplify the algorithm)
+    dividend = abs(dividend)
+    divisor = abs(divisor)
+    
+    quotient = 0 
+    
+    while dividend >= divisor :
+        shift = 0 
+        while dividend >= (divisor << shift):
+            shift += 1 
+            
+        quotient += 1 << (shift - 1)
+        
+        dividend -= divisor << (shift - 1)
+        
+    return quotient if not sign else -quotient
+
+
+# Time :. O(LogN)
+
+# Test Run 
+print(bit_manipulation(22,3))
