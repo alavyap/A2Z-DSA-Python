@@ -30,23 +30,49 @@ Constraints:
 1 <= N  <= 106
 '''
 
-# Brute Force 
+# Optimal  Approach 
 
-def prime(n):
+def prime(N):
     factors = set()
-    divisor = 2 
+    lower = 2 
+    # ans = []
     
-    while divisor * divisor <= n :
-        if n % divisor == 0 : 
-            factors.add(divisor)
-            n //= divisor
+    while lower * lower <= N :
+        if N % lower == 0 : 
+            factors.add(lower)
+            N //= lower
             
         else:
-            divisor += 1 
-    if n >1 :
-        factors.add(n)
+            lower += 1 
+    if N >1 :
+        factors.add(N)
             
-    return factors
+    ans = sorted(factors)
+    return ans
 
 # Test Run 
-print(prime(100))
+print(prime(2))
+
+
+# # Optimal Approach
+# def bit(N):
+#     factors = set()
+#     lower= 3 
+    
+#     while N % lower == 0 :
+#         factors.add(lower)
+#         N //= lower
+        
+#     lower = 3 
+    
+#     while lower * lower <= N :
+#         while N % lower == 0 :
+#             factors.add(lower)
+#             N //= lower
+            
+            
+#     if N > 2 :
+#         factors.add(N)
+        
+#     ans = sorted(factors)
+#     return ans
