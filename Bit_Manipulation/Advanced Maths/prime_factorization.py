@@ -58,3 +58,24 @@ def main(N):
     return ans 
 # Test Run 
 print(main(12246))
+
+# Accepted Code 
+from math import sqrt
+def sieve(self):
+        N = 2*(10**5)
+        self.prime = [i for i in range(N + 1)]
+        root = int(sqrt(N))
+        for i in range(2, root + 1):
+            if self.prime[i] == i:
+                for j in range(i * i, N + 1, i):
+                    if self.prime[j] == j:
+                        self.prime[j] = i
+def findPrimeFactors(self, N):
+    # Code here
+    ans = []
+    while N > 1:
+        ans.append(self.prime[N])
+        N //= self.prime[N]
+        
+    return ans
+        

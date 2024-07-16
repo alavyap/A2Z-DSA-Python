@@ -57,7 +57,7 @@ def addOperators(nums,target):
            # string `nums`. Here's a breakdown of what each step does:
             n = int(nums[i:j+1])
             
-            if i == 0 :
+            if i == 0 : 
                 backtrack(j+1,n,n,str(n))
             else : 
                 backtrack(j+1,total + n ,n, expr + "+" +str(n))
@@ -65,7 +65,10 @@ def addOperators(nums,target):
                 backtrack(j+1,total - last + last *n , last * n, expr + "*" + str(n))
                 
                 
-            if n == 0 :
+            if n == 0 :   #checking for the leading zeroes
                 break 
     backtrack(0,0,0,"")
     return list(ans)
+
+# Time :. O(4^N∗N)
+# Space :. O(N)

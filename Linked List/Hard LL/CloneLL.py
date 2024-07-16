@@ -66,7 +66,7 @@ def connect_Random (head):
             
         temp = temp.next.next 
         
-# Main Function 
+# Function  to Copy 
 def deepCopy (head):
     temp = head 
     dummy = Node(-1)
@@ -82,3 +82,13 @@ def deepCopy (head):
         temp = temp.next 
 
     return dummy.next
+
+
+# Main Function
+def cloneLL(head):
+    if not head :
+        return None 
+    
+    insert_Copy(head)
+    connect_Random(head)
+    return deepCopy(head)

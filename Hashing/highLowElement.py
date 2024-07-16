@@ -30,10 +30,6 @@ You are given an array of size n. Find the highest and the lowest frequency elem
 If there are multiple elements that have the highest frequency or lowest frequency, pick the smallest element
 
 '''
-
-from multiprocessing.util import DEFAULT_LOGGING_FORMAT
-from token import LEFTSHIFT
-from turtle import right
 from typing import List
 
 def getFrequencies(v: List[int]) -> List[int]: 

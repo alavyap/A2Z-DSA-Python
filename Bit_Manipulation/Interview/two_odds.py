@@ -33,16 +33,54 @@ Constraints:
 
 '''
 
-# Brute Force 
-def bit (arr,n):
+# Brute Force  
+def bit (Arr,n):
+    Arr.sort()
+    xor = 0 
+    for num in Arr :
+        xor ^= num
+        
+    right = xor & -xor
+    
+    
     one = 0 
     two = 0 
+    for num in Arr :
+        if num & right :
+            one ^= num 
+        else :
+            two ^= num 
     
-    for i in arr :
-        one = (one ^ i) & ~two 
-        two = (two ^ i ) & ~one 
         
-    return one, two
+    return two,one
 
 # Test Run 
-print(bit{1,7,5,7,5,4,7,4}, 8)
+# arr = [1, 7, 5, 7, 5, 4, 7, 4]
+arr =  [37, 30, 12, 12, 19, 19, 30, 19, 19, 37, 12, 2, 2, 19, 37, 2, 12, 2, 12, 19, 46, 2, 2, 2, 37, 12, 12, 37, 2, 2, 27, 19, 46, 12, 2, 37, 12, 12]
+n = len(arr)
+# print(bit(arr, n))
+
+
+# Not Using Bit Manipulation as GFG was not accepting the code 
+
+def not_bit(Arr,n):
+    map = {}
+    
+    for num in Arr :
+        if num in map:
+            map[num] += 1 
+        else :
+            map[num] = 1 
+    
+    result = [num for num,count in map.items() if count % 2 != 0  ]
+    
+    if result[0] < result[1]:
+        result[0],result[1] = result[1],result[0] 
+        
+    return result
+
+# Test Run 
+Arr =  [37, 30, 12, 12, 19, 19, 30, 19, 19, 37, 12, 2, 2, 19, 37, 2, 12, 2, 12, 19, 46, 2, 2, 2, 37, 12, 12, 37, 2, 2, 27, 19, 46, 12, 2, 37, 12, 12]
+n = len(Arr)
+
+print(not_bit(Arr,n))

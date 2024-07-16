@@ -24,9 +24,23 @@ digits[i] is a digit in the range ['2', '9'].
 def letterCombination(digits):
     
     ans = [] 
+    phone_pad =  {"2": "abc", "3": "def", "4": "ghi", "5": "jkl", "6": "mno", "7": "pqrs", "8": "tuv", "9": "wxyz"}
+    
     # if the digit is empty 
     if not digits:
         return ans
     
     
-    phone_pad =  {"2": "abc", "3": "def", "4": "ghi", "5": "jkl", "6": "mno", "7": "pqrs", "8": "tuv", "9": "wxyz"}
+    def backtrack(combinations,given_digits):
+        
+        if not given_digits :
+            ans.append(combinations)
+            return 
+        
+        
+        for letters in phone_pad[given_digits[0]]:
+            backtrack(combinations + letters, given_digits[1:])
+            
+    backtrack ("", digits)
+    return ans
+    

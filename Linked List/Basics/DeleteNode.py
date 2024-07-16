@@ -62,6 +62,7 @@ def deleteNode (list,k):
         
     while (temp != None):
         count += 1 
+        temp = temp.next 
             
         if (count == k) :
             prev.next = prev.next.next 

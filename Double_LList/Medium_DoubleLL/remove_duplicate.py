@@ -16,11 +16,11 @@ retained, rest nodes with value = 1 are deleted.
 '''
 # Optimal Approach
 def remove_Duplicates(head):   
-    
+    # Time: O(N) & Space: O(1)
     temp = head 
     
     while temp is not None and temp.next is not None : 
-        if temp.data == temp.next.data : 
+        if temp.data == temp.next.data :   
             next_node = temp.next.next 
             temp.next = next_node
             if next_node is not None :
