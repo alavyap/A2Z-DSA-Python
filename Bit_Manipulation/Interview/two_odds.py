@@ -84,3 +84,20 @@ Arr =  [37, 30, 12, 12, 19, 19, 30, 19, 19, 37, 12, 2, 2, 19, 37, 2, 12, 2, 12, 
 n = len(Arr)
 
 print(not_bit(Arr,n))
+
+
+# Optimal Approach 
+
+def bit_mani(A,N):
+    x = 0 
+    for i in A: 
+        x = x ^i 
+    d = -x & x 
+    y = z = 0 
+    
+    for v in A :
+        if v & d :
+            y ^= v 
+        else:
+            z ^= v 
+    return (max(z,y),min(y,z))

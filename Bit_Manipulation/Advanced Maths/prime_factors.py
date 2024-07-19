@@ -53,26 +53,3 @@ def prime(N):
 # Test Run 
 print(prime(2))
 
-
-# # Optimal Approach
-# def bit(N):
-#     factors = set()
-#     lower= 3 
-    
-#     while N % lower == 0 :
-#         factors.add(lower)
-#         N //= lower
-        
-#     lower = 3 
-    
-#     while lower * lower <= N :
-#         while N % lower == 0 :
-#             factors.add(lower)
-#             N //= lower
-            
-            
-#     if N > 2 :
-#         factors.add(N)
-        
-#     ans = sorted(factors)
-#     return ans
