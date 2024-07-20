@@ -45,20 +45,75 @@ Constraints:
 
 class Q :
     
-    def __init__(self) :
-        self.arr = []
-        self.start = 0
-        self.end = 0
+    def __init__ (self):
+        self.arr = [] 
+        self.start = 0 
+        self.rear = 0 
         
+    def push(self, x):
+         
+         #add code here
+        self.arr.append(x)
+        self.rear += 1 
+        
+    #Function to pop an element from queue and return that element.
+    def pop(self): 
+         
+        # add code here
+        if self.start < self.rear:
+            temp = self.arr[self.start]
+            self.start += 1
+            return temp
+        return -1  # or raise an exception for empty queue
     
-    def p(self,x):
-        self.arr[self.end].append(x)
-        self.end += 1 
-        
-        
-    def pop(self):
-        if not self.arr:
-            return -1 
-       
-        return self.arr[self.start].pop
-        self.start += 1 
+    
+    
+# Striver Code 
+
+class Queue:
+    def __init__(self):
+        self.start = -1
+        self.end = -1
+        self.currSize = 0
+        self.maxSize = 16
+        self.arr = [0] * self.maxSize
+
+
+    def push(self, newElement: int) -> None:
+        if self.currSize == self.maxSize:
+            print("Queue is full\nExiting...")
+            exit(1)
+        if self.end == -1:
+            self.start = 0
+            self.end = 0
+        else:
+            self.end = (self.end + 1) % self.maxSize
+        self.arr[self.end] = newElement
+        print("The element pushed is", newElement)
+        self.currSize += 1
+
+
+    def pop(self) -> int:
+        if self.start == -1:
+            print("Queue Empty\nExiting...")
+        popped = self.arr[self.start]
+        if self.currSize == 1:
+            self.start = -1
+            self.end = -1
+        else:
+            self.start = (self.start + 1) % self.maxSize
+        self.currSize -= 1
+        return popped
+
+
+    def top(self) -> int:
+        if self.start == -1:
+            print("Queue is Empty")
+            exit(1)
+        return self.arr[self.start]
+
+
+    def size(self) -> int:
+        return self.currSize
+
+
