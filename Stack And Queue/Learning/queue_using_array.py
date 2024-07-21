@@ -50,7 +50,7 @@ class Q :
         self.start = 0 
         self.rear = 0 
         
-    def push(self, x):
+    def push(self, x):     
          
          #add code here
         self.arr.append(x)
