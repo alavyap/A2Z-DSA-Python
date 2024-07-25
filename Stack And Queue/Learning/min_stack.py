@@ -43,3 +43,75 @@ At most 3 * 104 calls will be made to push, pop, top, and getMin.
 
 
 '''
+
+# pseduo code likha kya ?? 
+
+class StackM:
+
+    def __init__(self):
+        self.store = [] 
+        
+        
+
+    def push(self, val) :
+        self.store.append(val)
+        
+
+    def pop(self) :
+        if len(self.store) == 0 :
+            return -1 
+        return self.store.pop()         
+        
+
+    def top(self) :
+        if len(self.store) == 0 :
+            return -1 
+        return self.store[-1]
+
+    def getM(self) -> int:
+        # O(N) : Time // Brute Force 
+        
+        n = len(self.store)
+        low = self.store[0]
+        for i in range (n):
+            if self.store[i] < low :
+                low = self.store[i] 
+        return low
+
+
+
+# Optimal Code 
+
+class StackM:
+
+    def __init__(self):
+        self.store = [] 
+        self.minS = [] 
+        
+        
+
+    def push(self, val) :
+        self.store.append(val)
+        if  not self.minS or val <= self.minS[-1]:
+            self.minS.append(val)
+        
+
+    def pop(self) :
+        if self.store :
+            if self.store[-1] == self.minS[-1] :
+                self.minS.pop() 
+            self.store.pop() 
+                    
+        
+
+    def top(self) :
+        if len(self.store) == 0 :
+            return -1 
+        return self.store[-1]
+
+    def getM(self) -> int:
+        if self.minS: 
+            return self.minS[-1] 
+        return -1
+       
+
