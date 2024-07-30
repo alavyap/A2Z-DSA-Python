@@ -33,7 +33,6 @@ Constraints:
 1 ≤ |str| ≤ 10^5
 
 '''
-from unittest import result
 
 
 def prec(c):
@@ -95,7 +94,7 @@ def conversion(exp):
             
         elif char == ")":
             while ope and ope[-1] != "(":
-                result.append(ope.pop())
+                result.append(ope.pop())  
             
             if ope and ope[-1] == "(":
                 ope.pop() 
