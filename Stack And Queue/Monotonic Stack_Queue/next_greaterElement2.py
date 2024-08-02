@@ -28,7 +28,8 @@ Constraints:
 
 '''
 
-# Brute Force 
+# Optimal Approach
+ 
 def next_GE(nums):
     n = len(nums)
     nge = [-1] * n

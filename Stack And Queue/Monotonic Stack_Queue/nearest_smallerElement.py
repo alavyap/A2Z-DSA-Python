@@ -43,7 +43,8 @@ Explaination 2:
 
 
 '''
-# Brute Force 
+# Optimal Approach
+
 def prevSmaller(A):
     nse = []
     st = [] 
@@ -55,10 +56,7 @@ def prevSmaller(A):
             nse.append(st[-1])
         else:
             nse.append(-1)
-        st.append(num)
-        
-        
-    
+        st.append(num)     
     return nse
             
 a = [4,5,2,10,8]
