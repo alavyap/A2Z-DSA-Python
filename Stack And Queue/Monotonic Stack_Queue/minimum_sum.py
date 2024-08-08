@@ -26,9 +26,6 @@ Constraints:
 '''
 
 # Brute Force 
-from turtle import right
-
-
 def minSum(arr):
     n = len(arr)
     sumSub  =0 
