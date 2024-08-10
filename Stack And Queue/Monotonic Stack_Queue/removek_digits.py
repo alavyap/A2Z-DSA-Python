@@ -43,7 +43,7 @@ def removeK(num,k):
         
     stack = stack[:-k] if k > 0 else stack 
     result =  "".join(stack).lstrip("0")
-    return result if result else 0
+    return result if result else "0"
 
 
 a = "1432219"
