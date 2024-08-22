@@ -53,6 +53,74 @@ Constraints:
 0 <= key <= 105
 0 <= value <= 109
 At most 2 * 105 calls will be made to get and put.
- 
-
 '''
+
+# Optimal Approach 
+
+from collections import defaultdict, OrderedDict
+
+class Node : 
+    def __init__(self,key,value, freq = 1 ) :
+        self.key = key 
+        self.value = value 
+        self.freq = freq 
+        
+        
+        
+class LFUCache :
+    
+    def __init__(self, capacity) :
+        self.capacity = capacity 
+        self.key_to_node = {}
+        self.freq_to_nodes = defaultdict(OrderedDict) 
+        self.min_freq = 0 
+        
+    def get(self,key):  
+        if key not in self.key_to_node :
+            return -1 
+        
+        node = self.key_to_node[key]
+        self._update_freq(node)
+        return node.value
+    
+    def put(self,key,value): 
+        if self.capacity == 0 :
+            return 
+        
+        if key in self.key_to_node :
+            node = self.key_to_node[key]
+            node.value = value 
+            
+            self._update_freq(node)
+            
+            
+        else :
+            if len(self.key_to_node) >= self.capacity :
+                self._remove_least_frequent() 
+                
+            node  = Node(key,value) 
+            self.key_to_node[key] = node
+            
+            self.freq_to_nodes[1][key] = node
+            self.min_freq = 1 
+            
+    
+    def _update_freq(self,node): 
+        
+        freq = node.freq 
+        
+        del self.freq_to_nodes[freq][node.key]
+        
+        if not self.freq_to_nodes[freq] and freq == self.min_freq: 
+            self.min_freq += 1 
+        
+        node.freq += 1 
+        self.freq_to_nodes[node.freq][node.key] = node 
+        
+        
+    def _remove_least_frequent(self): 
+        key, node = self.freq_to_nodes[self.min_freq].popitem(last = False)
+        del self.key_to_node[key]
+        
+        
+        
