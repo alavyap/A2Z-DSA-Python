@@ -27,7 +27,7 @@ nums[i] is either 0 or 1.
 0 <= k <= nums.length
 
 '''
-# Brute Force 
+
 def  max_Ones(nums,k):
     
     left = 0 
