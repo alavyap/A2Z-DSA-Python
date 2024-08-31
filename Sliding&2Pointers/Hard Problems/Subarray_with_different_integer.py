@@ -31,31 +31,28 @@ Constraints:
 
 def subinterger(nums,k):
     n = len(nums)
-    mpp = {}
-    left = 0 
-    dis_count = 0 
-    length = 0 
+  
     
-    for right in range (n):
-        if mpp.get(nums[right], 0) == 0:
-            dis_count += 1 
+    def atMost(k):
+        mpp = {}
+        left = 0 
+        count = 0
+        for right in range (n):
+            if nums[right]  not in mpp :
+                mpp[nums[right]] = 0 
+            mpp[nums[right]] += 1
             
-        mpp[nums[right]]  = mpp.get(nums[right], 0) + 1
-        
-        
-        while dis_count > k :
-            lefty = nums[left]
-            mpp[nums[left]] -= 1 
-            
-            if mpp[nums[left]] == 0 :
-                dis_count -= 1 
-                del mpp[nums[left]]
-            left += 1 
-            
-        length = max(length, right - left + 1 )
-        
-    return length
+            while len(mpp) > k :
+                mpp[nums[left]] -= 1 
+                if mpp[nums[left]] == 0 :
+                    del mpp[nums[left]]
+                left += 1 
+                
+            count += (right -  left+ 1)
 
+        return count
+    
+    return atMost(k) - atMost(k-1)
 
 a =  [1,2,1,2,3]
 k = 2
