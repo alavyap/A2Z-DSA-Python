@@ -35,7 +35,7 @@ def findKth(arr,k):
                 
     return -max_heap[0]
 
-
+# Test
 arr= [7, 10, 4, 3, 20, 15]
 k = 3
 print(findKth(arr,k))

@@ -30,13 +30,11 @@ def KthArr(arr,k):
     
     for i in range (k):
         if arr[i] :
-            heapq.heappush(min_heap,(arr[i][0],i,0))
-            
+            heapq.heappush(min_heap,(arr[i][0],i,0))            
             
     while min_heap :
         val,array_ind, element_ind = heapq.heappop(min_heap)
-        res.append(val)
-        
+        res.append(val)        
         
         if element_ind + 1 < len(arr[array_ind]):
             next_element = arr[array_ind][element_ind +  1]

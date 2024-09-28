@@ -76,9 +76,7 @@ def findKth(nums,k):
             return quick(left,store_index - 1 , k - (right - store_index + 1 ))
     return quick(0,len(nums) -1, k )
 
-
-
-
+# Test
 nums=  [3,2,3,1,2,4,5,5,6]
 k = 4
 print(findKth(nums,k))
