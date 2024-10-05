@@ -32,4 +32,22 @@ Constraints:
 '''
 
 
+def countG(g,s):
+    n = len(g)
+    m =  len(s)
+    
+    l = 0 
+    r = 0 
+    
+    g.sort() 
+    s.sort()
+    
+    while l < m and r < n :
+        if g[r] <= s[l] :
+            r += 1 
+        l += 1 
+    return r 
 
+g = [1,2,3]
+s = [1,1]
+print(countG(g,s))
