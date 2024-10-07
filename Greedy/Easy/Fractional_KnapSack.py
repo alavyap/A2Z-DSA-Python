@@ -30,14 +30,17 @@ def __init__(self,val,w):
 
 def fk(self,w,arr,n):
     
-    perU = [0] * n 
+    arr.sort(key = lambda x : x.value / x.weight, reverse = True)
     
-    for i in range (n) :
-        perU[i] = self.val[i] % arr[i] 
-        
-    while sum < self.weight:
-        
-        
+    currentWeight = 0
+    finalValue = 0.0 
     
-    
-    
+    for i in range (n):
+        if currentWeight + arr[i].weight <= w :
+            currentWeight += arr[i].weight
+            finalValue += arr[i].value
+        else :
+            remain = w - currentWeight 
+            finalValue  += arr[i].value / arr[i].weight * remain
+            break 
+    return finalValue
