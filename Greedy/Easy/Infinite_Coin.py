@@ -26,3 +26,29 @@ All array elements are distinct
 
 '''
 
+def miniG(coins,M,sum):
+    
+    coins.sort(reversed= True)
+    count = 0 
+    
+    for coin in coins :
+        while sum >= coin :
+            sum -= coin
+            count += 1 
+    return count if sum == 0 else -1 
+
+
+# Dynamic Programing 
+def miniD (coins,M,sum):
+    
+    dp = [sum +1] * (sum +1 )
+    dp[0] = 0 
+    
+    for i in range (1,sum +1 ):
+        for coin in coins :
+            if coin <= i :
+                dp[i] = min(dp[i],dp[i-coin] + 1 )
+                
+    return dp[sum] if dp[sum] != sum + 1  else -1
+                
+    
