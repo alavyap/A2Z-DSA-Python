@@ -23,3 +23,17 @@ Constraints:
 
 
 '''
+
+def ntotal(n,start,end):
+    
+    meetings = sorted(zip(end,start))
+    
+    count = 0 
+    last_end = -1 
+    
+    for end_time,start_time  in meetings :
+        if start_time > last_end :
+            count += 1 
+            last_end  = end_time
+            
+    return count
