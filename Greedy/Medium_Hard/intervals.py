@@ -31,6 +31,36 @@ intervals is sorted by starti in ascending order.
 newInterval.length == 2
 0 <= start <= end <= 105
 
-
-
 '''
+
+def fitIntervals(intervals,newInterval):
+    n = len(intervals)
+    new_res = [] 
+    
+    i = 0 
+    
+    while i < n and intervals[i][1] < newInterval[0] :
+        new_res.append(intervals[i])
+        i += 1 
+        
+    
+    while i <n and intervals[i][0]  <= newInterval[1] :
+        # Update the updated interval
+        newInterval[0] = min(newInterval[0],intervals[1])
+        newInterval[1] = max(newInterval[1],intervals[1])
+        
+        i += 1
+        
+        
+    new_res.append(newInterval)
+    
+    
+    
+    while  i < n :
+        new_res.append(intervals[i])
+        i += 1 
+    
+    
+    return new_res 
+        
+        
