@@ -24,3 +24,6 @@ intervals[i].length == 2
 0 <= starti <= endi <= 104
 
 '''
+
+def merger(inter):
+    n = len(inter)
