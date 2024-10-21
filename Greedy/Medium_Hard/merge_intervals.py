@@ -25,5 +25,23 @@ intervals[i].length == 2
 
 '''
 
-def merger(inter):
-    n = len(inter)
+
+
+def merge(intervals):
+    # Step 1: Sort intervals (think about which key to sort by)
+    intervals.sort(key = lambda x : x[0])
+    
+    # Step 2: Initialize result list
+    merged = []
+    
+    for interval in intervals:
+        # If merged is empty or if current interval doesn't overlap with previous
+        # Simply append current interval
+        if not merged or merged[-1][1] < interval[0]:
+            merged.append(interval)
+        else:
+            # There is an overlap, so we should merge
+            # How should we merge?
+            merged[-1][1] =max(merged[-1][1],interval[1])
+                
+    return merged
