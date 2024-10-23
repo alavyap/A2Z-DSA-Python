@@ -16,20 +16,13 @@ Output: 1
  
 
 Your Task:
-
 Complete the function countNode() which takes an integer i as input and prints the count of maximum number of nodes at that level.
 
 
 Expected Time Complexity: O(1)
-
 Expected Space Complexity: O(1)
 
 
 Constraints:
 1<=i<=20
-
- 
-
-
-
 '''
