@@ -26,3 +26,12 @@ Expected Space Complexity: O(1)
 Constraints:
 1<=i<=20
 '''
+
+def maxi(i):
+    if i == 1 :
+        return 1 
+    ans = pow(2, i-1)
+    return (ans)
+
+
+print(maxi(6))
