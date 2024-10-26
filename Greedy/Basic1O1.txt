@@ -1,0 +1,18 @@
+Greedy Technique(Algorithm) 
+
+Follow local optimal choice at each stage with intend of finding global optimal
+
+2 Types : i) Feasible Solution(Selection), ii)Optimal Solution
+
+Applications : 1) Knap Sack Problem  :>  Greedy Method,
+                2) Job Sequencing
+                3) Minimum Spanning Tree 
+                5) Optimal Merge Pattern 
+                6) Huffman Coding
+                7) Dijkstra's Algorithm  
+                8) Prism 
+                9) Kruskals
+
+
+
+        For Optimal Problem : Dynamic Programming , Branch and Bound
