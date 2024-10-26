@@ -1,6 +1,0 @@
-Definition 
-Types 
-How to find if we have to use sliding window or not 
-
-Difference  between fixed and variable sliding window
-
