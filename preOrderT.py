@@ -88,6 +88,3 @@ def preorderTraversal(self, root) :
 '''
 Follow up: Recursive solution is trivial, could you do it iteratively?
 '''
-
-def preorderTraversal(root):
-    
