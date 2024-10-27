@@ -37,7 +37,6 @@ Special thanks to Strivers for providing the A2Z DSA Course and sheets, enabling
 
 ## Connect with Me 🌐
 
-- [Twitter](https://twitter.com/alavya_) 🐦
 - [LinkedIn](https://www.linkedin.com/in/alavyapandey) 👔
 
 ## License 📜
