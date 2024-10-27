@@ -107,3 +107,5 @@ def postOrder(rootNode,result) :
     result.append(rootNode.data)
 
     
+
+# This can be done using a helper function
