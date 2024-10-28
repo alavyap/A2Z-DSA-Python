@@ -88,3 +88,23 @@ def preorderTraversal(self, root) :
 '''
 Follow up: Recursive solution is trivial, could you do it iteratively?
 '''
+
+def itervative(root): 
+    res = []
+    
+    if not root :
+        return res
+    
+    stack = [root]
+    
+    while stack :
+        
+        curr = stack.pop() 
+        res.append(curr.val)
+        
+        
+        if curr.right :
+            stack.append(curr.right)
+        if curr.left :
+            stack.append(curr.left)
+    return res
