@@ -1,4 +1,5 @@
 '''
+LeetCode :> https://leetcode.com/problems/binary-tree-preorder-traversal/submissions/1436773247/
 
 Given the root of a binary tree, return the preorder traversal of its nodes' values.
 
@@ -90,21 +91,25 @@ Follow up: Recursive solution is trivial, could you do it iteratively?
 '''
 
 def itervative(root): 
+  
     res = []
-    
     if not root :
         return res
-    
-    stack = [root]
-    
-    while stack :
-        
-        curr = stack.pop() 
+   
+    stack = []
+    curr = root
+       
+    while stack or curr :
+       
+        while curr :
+       
+            stack.append(curr)
+            curr = curr.left
+       
+        curr = stack.pop()
         res.append(curr.val)
-        
-        
-        if curr.right :
-            stack.append(curr.right)
-        if curr.left :
-            stack.append(curr.left)
+       
+       
+        curr = curr.right
     return res
+

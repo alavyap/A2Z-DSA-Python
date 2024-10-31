@@ -88,6 +88,4 @@ def orders(root):
         
         
         curr = curr.right
-
-
     return res
