@@ -76,20 +76,20 @@ def Order(root):
     if not root :
         return res 
     
-    stack = []
-    curr = root
+    stack = [root]
     
-    while stack or curr :
+    while stack  :
         
-        while curr :
-            stack.append(curr)
-            curr = curr.left 
-            
         curr = stack.pop() 
-        curr = curr.right 
-        res.append(curr.val)
+        res.append(curr.val) 
+            
+        if curr.left :
+                stack.append(curr.left) 
+
+        if curr.right :
+            stack.append(curr.right)
         
         
-    return res
+    return res[::-1]
     
     
