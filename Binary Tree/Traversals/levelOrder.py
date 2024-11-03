@@ -33,15 +33,14 @@ def Order (root):
     if not root :
         return []
     
-    res = [] 
-    
+    res = []    
     q = deque([root])
     
     while q :
         level_size = len(q)        
         current_level = []
         
-        for i in range  (level_size) : 
+        for _ in range  (level_size) : 
             
             node = q.popleft()
             
