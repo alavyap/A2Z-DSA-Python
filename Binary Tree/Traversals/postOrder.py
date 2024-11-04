@@ -64,6 +64,37 @@ def order(root):
     helper(root)
     return res
 
+# 2 Stack Approach 
+
+def stackOrder(root):
+    
+    res = [] 
+    
+    if not root :
+        return res
+    
+    st1,st2 = [],[] 
+    
+    st1.append(root)
+    
+    while st1 :
+        root = st1.pop() 
+        
+        st2.append(root)
+        
+        if root.left is not None :
+            st1.append(root.left)
+            
+        if root.right is not None :
+            st1.append(root.right)
+            
+            
+    while st2 :
+        res.append(st2[-1].val)
+        st2.pop()
+        
+        
+    return res
 
 
 # Iterative Code L>R>Root
