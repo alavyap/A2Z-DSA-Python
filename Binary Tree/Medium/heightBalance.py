@@ -24,6 +24,7 @@ The number of nodes in the tree is in the range [0, 5000].
 '''
 
 # This is a dfs approach 
+# This can also be solve by bfs
 
 def isBalanced(root):
     
