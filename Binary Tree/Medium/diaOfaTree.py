@@ -27,3 +27,7 @@ def dTree(root):
     counterR = 0 
     
     maxiL= float("-inf")
+    
+    # we need to iterate the entire tree to know the level of each node 
+    
+    
