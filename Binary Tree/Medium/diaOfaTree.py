@@ -21,13 +21,10 @@ The number of nodes in the tree is in the range [1, 104].
 -100 <= Node.val <= 100
 
 '''
+# Brute Force 
 def dTree(root):
     
     counterL = 0 
     counterR = 0 
     
     maxiL= float("-inf")
-    
-    # we need to iterate the entire tree to know the level of each node 
-    
-    
