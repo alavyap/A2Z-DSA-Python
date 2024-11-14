@@ -22,9 +22,49 @@ The number of nodes in the tree is in the range [1, 104].
 
 '''
 # Brute Force 
+
+def __init__ (self): 
+    self.maxiD = 0
+
 def dTree(root):
     
-    counterL = 0 
-    counterR = 0 
+    if root is None :
+        return 0
     
-    maxiL= float("-inf")
+    leftH = dTree(root.left)
+    rightH = dTree(root.right)
+    
+    maxiD = max(maxiD, leftH + rightH)
+    
+    return 1 + max(leftH,rightH)     
+
+def diaTree(root):
+    
+    dTree(root)   
+    return dTree.maxiD
+
+
+
+# Optimal Approach 
+def main(root):
+    
+    Dmeter = [0]    
+    countH(root,Dmeter)    
+    return countH.Dmeter[0] 
+
+
+def countH(node,Dmeter):
+    
+    if not node :
+        return 0 
+    
+    lh = countH(node.left,Dmeter)
+    rh = countH(node.right,Dmeter)
+    
+    Dmeter[0] = max(Dmeter[0], lh + rh)
+    
+    return 1 + max(lh,rh)
+    
+    
+    
+    
