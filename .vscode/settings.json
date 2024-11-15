@@ -1,5 +1,6 @@
 {
     "python.analysis.autoImportCompletions": true,
     "docwriter.style": "Auto-detect",
-    "docwriter.progress.trackFunctions": false
+    "docwriter.progress.trackFunctions": false,
+    "python.analysis.typeCheckingMode": "off"
 }
