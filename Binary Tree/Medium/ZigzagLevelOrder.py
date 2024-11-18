@@ -23,3 +23,44 @@ The number of nodes in the tree is in the range [0, 2000].
 -100 <= Node.val <= 100
 
 '''
+
+from collections import deque
+
+
+def zlevel(root):
+    
+    result = [] 
+    
+    if not root :
+        return result 
+    
+    nodesQueue = deque([root]) 
+    
+    lefttoRight = True 
+    
+    while nodesQueue:
+        
+        size = len(nodesQueue)
+        
+        row = [0] * size 
+        
+        for i in range (size):
+            node = nodesQueue.popleft() 
+            
+            index  = i if lefttoRight else (size -1 - i )
+            
+            
+            row[index] = node.data 
+            
+            if node.left :
+                nodesQueue.append(node.left)
+                
+            if node.right :
+                nodesQueue.append(node.right)
+                
+                
+        lefttoRight = not lefttoRight 
+        
+        result.append(row)
+        
+    return result
