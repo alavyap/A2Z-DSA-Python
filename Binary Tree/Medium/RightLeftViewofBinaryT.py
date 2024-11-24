@@ -84,3 +84,51 @@ def viewL(root):
                 queue.append(node.right)
     
     return result
+
+# Recursive Right/ Left View 
+
+
+def Rview(root):
+    
+    res = [] 
+    
+    recursionR(root,0,res)
+    
+    return res 
+
+def recursionR(root,level,res) :
+    if not root :
+        return 
+    
+    if len(res) == level :
+        res.append(root.data)
+        
+    recursionR(root.right, level + 1, res)
+        
+    recursionR(root.left, level + 1, res)
+    
+
+
+def LView(root):
+    
+    result = [] 
+    
+    recursionL(root, 0, result)
+    
+    return result
+
+
+
+
+def recursionL(root,level,res) :
+    if not root :
+        return 
+    
+    if len(res) == level :
+        res.append(root.data)
+        
+    recursionR(root.left, level + 1, res)
+        
+    recursionR(root.right, level + 1, res)
+        
+    
