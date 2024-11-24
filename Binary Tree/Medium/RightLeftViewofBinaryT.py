@@ -61,31 +61,26 @@ def viewR(root):
 
 def viewL(root):
     
-    if not root :
-        return [] 
+    if not root:
+        return []
     
+    result = []
+    queue = [root]
     
-    position = {} 
-    
-    queue = [(root,0)]
-    max_level = 0
-  
-  
-    
-    while queue :
+    while queue:
+        level_size = len(queue)
         
-        node,level = queue.pop(0)
-        if level not in position:
-            position[level] = node.val
-        
-        max_level = max(max_level,level)
-        
-        
-        if node.left :
-            queue.append((node.left, level +1))
+        for i in range(level_size):
+            node = queue.pop(0)
             
-        if node.right :
-            queue.append((node.right,level+1))
+            # For left view, store the first node (i == 0)
+            if i == 0:
+                result.append(node.val)
             
-            
-    return [position[level] for level in range (max_level + 1)]
+            # Add children to queue
+            if node.left:
+                queue.append(node.left)
+            if node.right:
+                queue.append(node.right)
+    
+    return result
