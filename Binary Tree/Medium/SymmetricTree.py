@@ -24,4 +24,5 @@ Follow up: Could you solve it both recursively and iteratively?
 '''
 
 def treeS(root):
-    
+    if not root :
+        return True
