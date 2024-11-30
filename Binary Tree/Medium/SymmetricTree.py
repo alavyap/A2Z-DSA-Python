@@ -23,11 +23,50 @@ The number of nodes in the tree is in the range [1, 1000].
 Follow up: Could you solve it both recursively and iteratively?
 '''
 
-def treeS(root):
+# Recursive Solution 
+
+def RTree(root):
     if not root :
-        return False
-    
-    flag = True
+        return True
     
     left = root.left 
     right = root.right
+    
+    def check(s1,s2):
+        
+        if not s1 and not s2 : 
+            return True 
+        
+        if not s1 or not s2 :
+            return False 
+        
+        return s1.val == s2.val and check(s1.left, s2.right) and check(s1.right , s2.left) 
+    
+    return check(left,right)
+
+def ITree(root):
+    if not root  :
+        return True 
+    
+    queue = [(root.left,root.right )]
+    
+    while queue :
+        left,right = queue.pop(0) 
+        
+        
+        if not left and not right :
+            continue 
+        
+        if not left or not right or left.val != right.val :
+            return False 
+        
+        
+        queue.append((left.left, right.right))
+        queue.append((left.right,right.left))
+        
+    return True 
+         
+    
+     
+    
+    
