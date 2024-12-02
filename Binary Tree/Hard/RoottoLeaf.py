@@ -37,3 +37,32 @@ Expected Auxiliary Space: O(height of the tree)
 Constraints:
 1<=n<=104
 '''
+
+def path(root):
+   
+   all_paths = [] 
+   current_path = [] 
+   
+   if not root :
+      return [] 
+   
+   def dfs(node):
+      
+      current_path.append(node.data)
+      
+      
+      if not node.left and not node.right :
+         all_paths.append(current_path.copy())
+         
+      
+      if node.left :
+         dfs(node.left)
+      
+      if node.right :  
+         dfs(node.right)
+         
+      
+      current_path.pop()
+   
+   dfs(root)
+   return all_paths
