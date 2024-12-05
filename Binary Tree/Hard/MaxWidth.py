@@ -38,13 +38,47 @@ The number of nodes in the tree is in the range [1, 3000].
 
 '''
 
+from queue import Queue
+
+
 def maxW(root):
     
     if not root :
-        return 
+        return 0 
     
     
-    wCount = 0 
+    wCount = 1 
+    q = Queue()
+    
+    q.put((root,0))
+    
+    
+    while not q.empty():
+        
+        size = q.qsize()
+        
+        minmum = q.queue[0][1]
+        
+        first,last = None,None
+        
+        for i in range (size):
+            
+            cur_id = q.queue[i][1] - minmum 
+            
+            node = q.queue[i][0] 
+            
+            if i == 0 :     
+                first = cur_id 
+                
+            if node.left :
+                q.put((node.left,cur_id * 2 +1 ))
+                
+                
+        wCount = max(wCount,last - first +1 )
+               
+    
+    return wCount 
+    
     
     
     
