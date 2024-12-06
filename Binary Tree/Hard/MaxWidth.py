@@ -38,48 +38,72 @@ The number of nodes in the tree is in the range [1, 3000].
 
 '''
 
-from queue import Queue
 
 
-def maxW(root):
+from collections import deque
+
+def widthOfBinaryTree(self, root):
+    
+    if not root:
+        return 0
+        
+    # Queue will store tuples of (node, position)
+    queue = deque([(root, 0,0)])
+    max_width = 1
+        
+    while queue:
+        # Your code here to process each level
+        
+        level_size = len(queue)
+        first= last = 0
+         
+        # Think about:
+        for i in range( level_size):
+            # 1. How to get all nodes at current level
+            node, id = queue.popleft()
+            if i == 0 :
+                first = id 
+            last = id
+        # 2. How to track leftmost and rightmost positions
+            if node.left :
+                queue.append((node.left,id * 2 ))
+            if node.right :
+                queue.append((node.right,id * 2 +1))
+            
+        # 3. How to calculate width
+        max_width = max(max_width, last - first +1)
+        
+            
+    return max_width
+
+
+# Optimal Code 
+
+
+def opwidth(root):
     
     if not root :
         return 0 
     
+    maxW = 0 
     
-    wCount = 1 
-    q = Queue()
+    queue = deque([(root,0,0)])
     
-    q.put((root,0))
+    level_start = {}
     
-    
-    while not q.empty():
+    while queue :
+        node,level,position = queue.popleft()
         
-        size = q.qsize()
-        
-        minmum = q.queue[0][1]
-        
-        first,last = None,None
-        
-        for i in range (size):
+        if level not in level_start :
+            level_start[level] = position 
             
-            cur_id = q.queue[i][1] - minmum 
-            
-            node = q.queue[i][0] 
-            
-            if i == 0 :     
-                first = cur_id 
-                
-            if node.left :
-                q.put((node.left,cur_id * 2 +1 ))
-                
-                
-        wCount = max(wCount,last - first +1 )
-               
-    
-    return wCount 
-    
-    
-    
-    
-    
+        current_pos = position - level_start[level]
+        maxW  = max(maxW, current_pos +1)
+        
+        if node.left :
+            queue.append((node.left, level +1, current_pos * 2 ))
+        
+        if node.right : 
+            queue.append((node.right, level+ 1, current_pos * 2 +1))
+        
+    return maxW
