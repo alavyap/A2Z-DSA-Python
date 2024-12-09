@@ -29,3 +29,61 @@ target is the value of one of the nodes in the tree.
 0 <= k <= 1000
 
 '''
+
+
+
+def distance(root,target,k):
+    
+    parent_track = {} 
+    
+    def find_target_and_parent(node,parent=None):
+        if not node :
+            return None 
+        
+        parent_track[node] = parent
+        
+        
+        if node.val == target.val :
+            return node 
+        
+        left = find_target_and_parent(node.left,node)
+        right = find_target_and_parent(node.right,node)
+        
+        return left if left else right
+    
+    def find_nodes_at_k_distance() :
+        from collections import deque 
+        queue = deque([(target_node,0)])
+        
+        visited = {target} 
+        result = [] 
+        
+        while queue :
+            node,dist = queue.popleft()
+            
+            if dist == k :
+                result.append(node.val)
+                continue 
+            
+            if node.left and node.left not in visited :
+                visited.add(node.left)
+                queue.append((node.left, dist +1))
+            
+            if node.right and node.right not in visited :
+                visited.add(node.right)
+                queue.append((node.right, dist +1 ))
+                
+            if node in parent_track and parent_track[node] and parent_track[node] not in visited:
+                visited.add(parent_track[node])
+                queue.append((parent_track[node], dist + 1))
+        return result
+                 
+    
+    
+    
+    target_node = find_target_and_parent(root)
+    
+    if not target_node : 
+        return [] 
+    return find_nodes_at_k_distance()
+    
