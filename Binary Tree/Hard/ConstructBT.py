@@ -28,6 +28,7 @@ inorder is guaranteed to be the inorder traversal of the tree.
 
 '''
 
+
 def constructBT(preorder,inorder):
     
     hashTree = {} 
@@ -42,7 +43,7 @@ def constructBT(preorder,inorder):
             return None
         
         root_val = preorder[preStart]
-        root = TreeNode(root_val)  # type: ignore
+        root = TreeNode(root_val) 
         
         inRoot = hashTree[root_val]
         
