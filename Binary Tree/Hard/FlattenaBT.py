@@ -45,7 +45,7 @@ class Solution:
             return 
         
         self.flat(root.right)
-        
+
         self.flat(root.left) 
         
         root.right = self.prev
@@ -56,3 +56,50 @@ class Solution:
         
 
 # Better Approach 
+class Better :
+    
+        
+    
+    def betterFlat(root):
+        
+        if not root :
+            return 
+        
+        stack = [root] 
+       
+        
+        while stack :
+            cur = stack.pop()
+            
+            if cur.right :
+                stack.append(cur.right)
+                
+            if cur.left :
+                stack.append(cur.left)
+                
+            if stack : 
+                cur.right = stack[-1]
+           
+            cur.left = None 
+         
+            
+# Optimal Approach 
+
+def morris(root):
+
+    curr = root 
+    
+    while curr :
+        
+        if curr.left :
+            
+            pre = curr.left 
+            
+            while pre.right :
+                pre = pre.right 
+                
+            pre.right = curr.right 
+            
+            curr.right = curr.left 
+            curr.left = None 
+        curr = curr.right
