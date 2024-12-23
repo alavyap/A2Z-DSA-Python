@@ -33,8 +33,3 @@ def checkBT(arr):
             return False 
     return True
     
-# Test Case 
-print(checkBT([8, 14, 45, 64, 100]))  # Should be True
-print(checkBT([5, 6, 1, 8, 7]))       # Should be False
-print(checkBT([1]))                    # Should be True
-print(checkBT([2, 2, 3]))             # Should be False
