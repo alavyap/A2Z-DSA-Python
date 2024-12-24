@@ -23,6 +23,7 @@ Constraints:
 
 '''
 
+# Optimal Approach
 def checkBT(arr):
     
     if len(arr)  <= 1:
@@ -33,3 +34,4 @@ def checkBT(arr):
             return False 
     return True
     
+
