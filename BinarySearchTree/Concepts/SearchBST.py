@@ -28,16 +28,20 @@ root is a binary search tree.
 '''
 
 def findVal(root,val):
-    
+    res = []
     if not root :
         return [] 
     
     cur = root 
     
     if cur == val :
-        return [cur,cur.left,cur.right]
+        res.append(cur.data)
+        res.append(cur.left.data)
+        res.append(cur.right.data)
     
     elif cur < val  :
         cur = root.left
     else :
-        cur = root.right         
+        cur = root.right      
+        
+    return res
