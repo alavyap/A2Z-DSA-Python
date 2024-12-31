@@ -26,22 +26,43 @@ The number of nodes in the tree is in the range [1, 5000].
 root is a binary search tree.
 1 <= val <= 107
 '''
-
+# Recursive
 def findVal(root,val):
-    res = []
+    
     if not root :
-        return [] 
+       return None 
     
-    cur = root 
+    if root.data == val :
+        return root 
     
-    if cur == val :
-        res.append(cur.data)
-        res.append(cur.left.data)
-        res.append(cur.right.data)
-    
-    elif cur < val  :
-        cur = root.left
-    else :
-        cur = root.right      
+    if root.data < val:
+      return findVal(root.right,val)
+      
+    if root.data > val :
+        return findVal(root.left,val)
         
-    return res
+    
+# If condition 
+
+def BSt(root,val):
+    
+    curr = root 
+    while curr :
+        
+        if curr.val == val :
+            return curr 
+        elif curr.val < val :
+            curr = curr.right 
+        else :
+            curr = curr.left 
+    return None 
+
+
+# Basic Logical Approach
+
+def sBST(root,val):
+    
+    while root is not None and root.val != val :
+        
+        root = root.left if val < root.val else root.right 
+    return root 
