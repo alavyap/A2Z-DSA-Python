@@ -53,4 +53,23 @@ def isBalanced(root):
 
     return  isBalanced(root.left) and isBalanced(root.right)
 
-    
+
+# O(N) Time 
+
+def isBalanced(self, root) -> bool:
+    def dfs(root):
+        if not root:
+            return [True, 0]  # [isBalanced, height]
+            
+            # Get left and right subtree status
+        left = dfs(root.left)
+        right = dfs(root.right)
+            
+            # Check if balanced
+        balanced = (left[0] and right[0] and 
+                abs(left[1] - right[1]) <= 1)
+            
+            # Return current status and height
+        return [balanced, 1 + max(left[1], right[1])]
+        
+    return dfs(root)[0]

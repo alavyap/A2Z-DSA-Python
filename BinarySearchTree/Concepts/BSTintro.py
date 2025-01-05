@@ -35,3 +35,21 @@ def checkBT(arr):
     return True
     
 
+
+
+# Proper BST Validation Implementation 
+
+def isValidBST(root):
+    
+    def valid(node,min_val,max_val):
+        
+        if not node :
+            return True 
+        
+        if node.val <= min_val or node.val >= max_val:
+            return False 
+        
+        return valid(node.left,min_val,node.val) and valid(node.right,node.val, max_val)
+    
+    
+    return valid(root,float("-inf"),float("-inf"))

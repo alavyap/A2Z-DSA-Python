@@ -69,7 +69,7 @@ def countN (root):
         node = node.right 
         
     if left_h  == right_h : 
-        return (1 << (left_h +1)) -1 
+        return (2 << (left_h)) -1 
     
     
     # if not perfect 

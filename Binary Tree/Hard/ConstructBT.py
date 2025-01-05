@@ -43,7 +43,7 @@ def constructBT(preorder,inorder):
             return None
         
         root_val = preorder[preStart]
-        root = TreeNode(root_val) 
+        root = TreeNode(root_val) #type:ignore
         
         inRoot = hashTree[root_val]
         
@@ -54,3 +54,31 @@ def constructBT(preorder,inorder):
         return root
         
     return (build(0, len(preorder)- 1 , 0, len(inorder) -1 ))
+
+
+# Not Optimal >> It is better for Space Complexity ,not on Time Complexity (O(N^2))
+def notOptimal(inorder,preorder):
+    
+    def builder(pre_start,pre_end,in_start,in_end):
+        if in_start > in_end :
+            return None 
+
+        root_val = preorder[pre_start]
+        root = TreeNode(root_val) #type:ignore
+        
+        inRoot = in_start
+        
+        while inorder[inRoot] != root_val :
+            inRoot += 1 
+        numleft = inRoot - in_start 
+        
+        root.left = builder(pre_start +1, pre_start + numleft,in_start, inRoot -1)
+        root.right = builder(pre_start + numleft +1, pre_end, inRoot +1, in_end)
+        
+        return root 
+    
+    return (builder(0,len(preorder)-1, 0 ,len(inorder) -1))
+        
+        
+        
+    
