@@ -64,3 +64,28 @@ def ksmallest(root,k):
     
     inOrder(root)
     return result 
+
+# Optimal Approach 
+
+def smallest(root,k):
+    
+    count = [0]
+    result = [0] 
+    
+    solve(root,count,result,k)
+    return result[0]
+
+
+def solve(root,count,result,k):
+    
+    if root is None :
+        return 
+    
+    solve(root,count,result,k)
+    count[0] += 1
+    if count[0] == k :
+        result[0] = root.val
+        return 
+    solve(root.right,count,result,k)
+    
+
