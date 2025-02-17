@@ -28,5 +28,19 @@ All the values of preorder are unique.
 
 '''
 
-def preBST(preorder):
-    pass
+def bstPO(Order):
+    
+    i = [0] 
+    
+    def build(bound):
+        if i[0] >= len(Order) or Order[i[0]] > bound :
+            return None 
+        
+        root = TreeNode(Order[i[0]]) #type:ignore
+        i[0] += 1 
+        
+        root.left = build(root.val)
+        root.right = build(bound)
+        return root 
+    
+    return build (float("inf"))
