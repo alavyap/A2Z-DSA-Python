@@ -44,15 +44,12 @@ Constraints:
 
 '''
 def TotalProvinces(self,adj,V):
-
-    
-
     def dfs (node,adjLs,visited):
         
         visited[node] = True 
-        for neighbour in adjLs[node]:
-            if not visited[neighbour]:
-                dfs(neighbour,adjLs,visited)
+        for neighbor in adjLs[node]:
+            if not visited[neighbor]:
+                dfs(neighbor,adjLs,visited)
                     
     adjLs = {i : [] for i in range(V)}
     for i in range (V):

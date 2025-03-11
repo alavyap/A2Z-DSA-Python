@@ -36,10 +36,10 @@ isConnected[i][j] == isConnected[j][i]
 
 def checker(isConnected): 
     def dfs(node):
-        for neighbour in range (n):
-            if isConnected[node][neighbour] == 1 and not visited[neighbour]:
-                visited[neighbour] = True
-                dfs(neighbour)
+        for neighbor in range (n):
+            if isConnected[node][neighbor] == 1 and not visited[neighbor]:
+                visited[neighbor] = True
+                dfs(neighbor)
                 
                 
     n = len(isConnected)
