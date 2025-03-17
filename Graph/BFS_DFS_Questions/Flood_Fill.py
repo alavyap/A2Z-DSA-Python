@@ -104,9 +104,7 @@ def floodOptimalBFS(image,sr,sc,color):
         return image 
     
     queue = deque()
-    queue.append((sr,sc))
-    
-    
+    queue.append((sr,sc))   
     image[sr][sc] = color 
     
     directions = [(-1,0),(1,0),(0,-1),(0,1)]
@@ -118,7 +116,6 @@ def floodOptimalBFS(image,sr,sc,color):
         
         for dr,dc in directions :
             nr,nc = r + dr, c +dc 
-            
             
             if 0 <= nr < len(image) and 0 <= nc < len(image[0]) and image[nr][nc] == original_color :
                 image[nr][nc] = color 

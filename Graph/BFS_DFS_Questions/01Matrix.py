@@ -45,14 +45,12 @@ def updatedMatrix(mat):
                 result[i][j] = 0 
                 queue.append((i,j))
                 
-                
     while queue :
         x,y = queue.popleft() 
         for dx,dy in directions :
             nx,ny = x +dx, y + dy
             
             if 0 <= nx < n and 0 <= ny < m :
-                
                 if result[nx][ny] > result[x][y] + 1 :
                     result[nx][ny] = result[x][y] +1 
                     queue.append((nx,ny))

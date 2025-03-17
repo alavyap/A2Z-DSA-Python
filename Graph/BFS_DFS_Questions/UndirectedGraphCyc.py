@@ -36,7 +36,6 @@ def bfsCycle(V,adj):
         
         while queue: 
             node,parent = queue.popleft()
-            
             for neighbor in adj[node]:
                 if not visited[neighbor]:
                     visited[neighbor] = True
@@ -63,16 +62,13 @@ def dfsCycle(V,adj) :
         visited[node] = True 
         
         for neighbor in adj[node]:
-            
             if not visited[neighbor]:
-                
                 if dfs(neighbor,node):
                     return True 
             elif neighbor != parent :
                 return True 
             
         return False
-    
     
     for i in range (V):
         if not visited[i] :
