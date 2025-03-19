@@ -65,8 +65,6 @@ def floodFillBrute(image,sr,sc,color):
     
     
 # DFS Optimal Approach
-
-
 def floodFillDFS(image,sr,sc,color):
     
     initialColor = image[sr][sc]
@@ -90,7 +88,6 @@ def floodFillDFS(image,sr,sc,color):
                 dfs(nrow,ncol)
                 
     dfs(sr,sc)
-    
     return ans
 
 
@@ -99,21 +96,17 @@ def floodFillDFS(image,sr,sc,color):
 def floodOptimalBFS(image,sr,sc,color):
     
     original_color = image[sr][sc]
-    
     if original_color == color :
         return image 
     
     queue = deque()
     queue.append((sr,sc))   
     image[sr][sc] = color 
-    
     directions = [(-1,0),(1,0),(0,-1),(0,1)]
     
     
     while queue :
         r,c = queue.popleft() 
-        
-        
         for dr,dc in directions :
             nr,nc = r + dr, c +dc 
             

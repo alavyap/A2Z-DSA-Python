@@ -38,6 +38,8 @@ def graphDFS(adj):
   dfs_result = [] 
   helper(0,adj,visited,dfs_result)
   return dfs_result
+
+
 def helper(node,adj,visited,dfs_result):
     visited[node] = True
     dfs_result .append(node)
