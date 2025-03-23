@@ -41,7 +41,7 @@ The sum of all shortest transformation sequences does not exceed 105.
 from collections import defaultdict, deque
 from unittest import result
 
-
+# It can be TLE if the Word List is long and the endWord does not exists.
 def wordLadder2(beginWord,endWord,wordList):
     
     wordSet = set(wordList)
@@ -49,6 +49,9 @@ def wordLadder2(beginWord,endWord,wordList):
     result = [] 
     queue.add(beginWord)
     parent = defaultdict(set)
+    
+    if endWord not in wordList:
+        return []
     
     while queue :
         new_queue = set() 
@@ -77,4 +80,66 @@ def wordLadder2(beginWord,endWord,wordList):
             
     
     
+# Optimal Code 
+
+def wordLadder2(beginWord,endWord,wordList):
     
+    if endWord not in wordList :
+        return []
+    
+    wordSet = set(wordList)
+    level = {} 
+    level[beginWord] = 1 
+    parents = defaultdict(set)
+    queue = deque([beginWord])
+    found = False 
+    current_level = 1 
+    
+    
+    while queue and not found :
+        
+        for word in list(level.keys()):
+            if level[word] == current_level :
+                wordSet.discard(word)
+                
+        level_size = len(queue)
+        for _ in range (level_size) :
+            current = queue.popleft()
+            
+            
+            for i in range (len(current_level)):
+                for c in "abcdefghijklmnopqrstuvwxyz":
+                    
+                    next_word = current[:i] + c + current[i+1:]
+                    
+                    if next_word not in wordSet :
+                        continue 
+                    
+                    if next_word not in level :
+                        level[next_word] = current_level + 1 
+                        queue.append(next_word)
+                        
+                    if level.get(next_word,0) == current_level + 1 :
+                        parents[next_word].add(current)
+                        
+                    if next_word == endWord :
+                        found = True 
+                    
+        current_level  += 1 
+    
+    result = [] 
+    
+    def backtrack(word,path):
+        if word == beginWord :
+            path.append(word)
+            result.append(path[::-1])
+            return     
+        
+        path.append(word)
+        for parent in parents[word]:
+            backtrack(parent,path.copy())
+            
+        
+    if found:
+        backtrack(endWord,[])
+    return result
