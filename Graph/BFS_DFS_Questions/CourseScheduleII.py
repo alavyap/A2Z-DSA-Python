@@ -39,7 +39,8 @@ All the pairs [ai, bi] are distinct.
 
 # Brute Force 
 
-from collections import defaultdict
+from collections import defaultdict, deque
+import queue
 
 
 def bruteOrder(numCourses,prerequsites):
@@ -72,3 +73,30 @@ def bruteOrder(numCourses,prerequsites):
             return[] 
                 
     return order[::-1] 
+
+
+# Optimal Approach 
+
+def optimalOrder(numCourses,prerequisites):
+    
+    graph= defaultdict(list)
+    inDegree = [0] * numCourses
+    
+    for course,pre in prerequisites:
+        graph[pre].append(course)
+        inDegree[course] += 1 
+        
+    queue = deque([i for i in range (numCourses) if inDegree[i] == 0 ])
+    order = [] 
+    
+    while queue: 
+        course = queue.popleft() 
+        order.append(course)
+        
+        
+        for neighbor in graph[course]:
+            inDegree[neighbor] -= 1 
+            if inDegree[neighbor] == 0 :
+                queue.append(neighbor)
+                
+    return order if len(order) == numCourses else []
