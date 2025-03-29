@@ -173,12 +173,12 @@ class Solution:
                 transformed = [] 
                 for x,y in island: 
                     
-                    if i == 0 : transformed.appen((x,y))
+                    if i == 0 : transformed.append((x,y))
                     elif i == 1 : transformed.append((x,-y))
                     elif i == 2 : transformed.append((-x,y))
                     elif i == 3: transformed.append((-x,-y))
                     elif i == 4: transformed.append((y,x))
-                    elif i == 5 : transformed.append(y,-x)
+                    elif i == 5 : transformed.append((y,-x))
                     elif i == 6 : transformed.append((-y,x))
                     elif i == 7 : transformed.append((-y,-x))
                     
