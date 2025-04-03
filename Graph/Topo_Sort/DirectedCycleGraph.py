@@ -23,7 +23,7 @@ from collections import deque
 
 
 def isCycle(adj):
-    # Step 1: Compute in-degree of each node
+    # Step 1: Compute inDegree of each node
     V = len(adj)
     inDegree = [0] * V 
     for u in range (V):
