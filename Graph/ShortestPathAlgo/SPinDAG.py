@@ -40,17 +40,14 @@ def shortestPath(V,E,edges):
             if not visited[neighbor]:
                 dfs(neighbor)
         topo.append(node)
-        
-        
+     
     for i in range (V):
         if not visited[i] :
             dfs(i)
             
     topo.reverse()
-    
     dist = [float("inf")] * V 
-    dist[0] = 0 
-    
+    dist[0] = 0     
     
     for node in topo: 
         if dist[node] != float("inf"):
