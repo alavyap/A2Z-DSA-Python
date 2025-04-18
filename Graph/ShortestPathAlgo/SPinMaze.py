@@ -67,7 +67,7 @@ def spinMaze(grid):
             
             if 0 <= newRow < n and 0 <= newCol < n and grid[newRow][newCol] == 0  and not vis[newRow][newCol]: 
                 vis[newRow][newCol] = True 
-                queue.append(newRow,newCol,dist+1)
+                queue.append((newRow,newCol,dist+1))
                 
     return -1 
             
