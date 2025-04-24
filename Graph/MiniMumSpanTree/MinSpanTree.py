@@ -27,40 +27,23 @@ V-1 ≤ E ≤ (V*(V-1))/2
 The graph is connected and doesn't contain self-loops & multiple edges.
 '''
 
+import heapq
+
+
 def mst(V,adj):
-    edges = [[] for _ in range(V)]
     
-    for u in range(V): 
-        for vw in adj[u] :
-            v,w = vw 
-            edges[u].append((v,w))
-        
     visited = [False] *V 
-    visited[0] = True 
+    minHeap = [(0,0)]
     mstWeight = 0 
-    while sum(visited) < V :
+   
+    while minHeap: 
+        weight,u = heapq.heappop(minHeap)
         
-        minW = float("inf")
-        next = -1 
-        
-        for u in range(V):
-            if visited[u]: 
-                for v,w in edges[u]:
-                    if not visited[v] and w < minW :
-                        minW = w 
-                        next = v 
-                                              
-        if next == -1 : 
-            break 
-        visited[next] = True 
-        mstWeight += minW
+        if visited[u]: 
+           continue 
+        mstWeight += weight
+        visited[u] = True 
+        for v,w in adj[u]:
+            if not visited[v]:
+                heapq.heappush(minHeap,(w,v))
     return mstWeight
-
-
-# Upon Submitting  We get >>>
-# Test Cases Passed: 
-# 61 /71
-# Time limit exceeded.
-
-# Your program took more time than expected.Expected Time Limit : 1.72sec
-# Hint : Please optimize your code and submit again.
