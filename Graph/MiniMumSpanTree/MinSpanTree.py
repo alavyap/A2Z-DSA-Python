@@ -26,10 +26,10 @@ V-1 ≤ E ≤ (V*(V-1))/2
 1 ≤ w ≤ 1000
 The graph is connected and doesn't contain self-loops & multiple edges.
 '''
-
 import heapq
 
 
+# Prim's Algorithm
 def mst(V,adj):
     
     visited = [False] *V 
