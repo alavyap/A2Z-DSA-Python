@@ -47,3 +47,56 @@ def mst(V,adj):
             if not visited[v]:
                 heapq.heappush(minHeap,(w,v))
     return mstWeight
+
+
+# Kruskal's Algorithm 
+
+class Kruskal: 
+    
+    def find (self,parent,node):
+        if parent[node] != node: 
+            parent[node] = self.find(parent,parent[node])
+        return parent[node]
+    
+    def union(self,parent,rank,u,v):
+        root_u = self.find(parent,u)
+        root_v = self.find(parent,v)
+        
+        if root_u == root_v: 
+            return False 
+        if rank[root_u] < rank[root_v]:
+            parent[root_u] = root_v
+        elif rank[root_u] > rank[root_v]:
+            parent[root_v] = root_u 
+        else: 
+            parent[root_v] = root_u 
+            rank[root_u] += 1 
+        return True 
+    
+    
+    def mainF(self,V,adj): 
+        edges = []
+        visited = set() 
+        
+        for u in range (V):
+            for v,w in adj[u]: 
+                if (u,v) not in visited and (v,u) not in visited: 
+                    edges.append((w,u,v))
+                    visited.add((u,v))
+                    visited.add((v,u))
+                    
+        edges.sort() 
+        
+        parent = [i for i in range(V)]
+        rank = [0] * V 
+        mstWeight = 0 
+        count = 0 
+        
+        for w,u,v in edges:
+            if self.union(parent,rank,u,v):
+                mstWeight += w 
+                count += 1 
+                if count == V -1 : 
+                    break 
+        return mstWeight
+    
