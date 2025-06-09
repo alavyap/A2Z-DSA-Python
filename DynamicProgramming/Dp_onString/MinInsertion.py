@@ -67,7 +67,5 @@ def insertMin(s):
                 curr[ind2] = 1 + prev[ind2 -1]
             else: 
                 curr[ind2] = max(prev[ind2], curr[ind2 -1])
-                
-        prev = curr[:]
-        
+        prev = curr[:]        
     return n - prev[m]
